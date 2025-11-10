@@ -52,14 +52,34 @@ namespace Proj4
     public double X { get => x; set => x = value; }
     public double Y { get => y; set => y = value; }
 
-    public void LerRegistro(BinaryReader arquivo, long qualRegistro)
-    {
-        
-    }
+      public void LerRegistro(BinaryReader arquivo, long qualRegistro)
+      {
+          if (arquivo != null)
+          {
+                try
+                {
+                    long qtosBytesAPular = qualRegistro * TamanhoRegistro;
+
+                    arquivo.BaseStream.Seek(qtosBytesAPular, SeekOrigin.Begin);
+
+                    this.X = arquivo.ReadDouble();
+                    this.Y = arquivo.ReadDouble();
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+          }
+      }
 
     public void GravarRegistro(BinaryWriter arquivo)
     {
-
+        if (arquivo != null)
+        {
+            arquivo.Write(X);
+            arquivo.Write(Y);
+        }
     }
   }
 
