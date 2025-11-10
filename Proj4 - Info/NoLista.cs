@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgendaAlfabetica
+namespace Proj4
 {
     public class NoLista<Dado> 
         where Dado :   IComparable<Dado>

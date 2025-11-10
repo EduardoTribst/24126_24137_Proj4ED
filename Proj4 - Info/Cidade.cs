@@ -1,5 +1,5 @@
-﻿using AgendaAlfabetica;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -62,6 +62,14 @@ namespace Proj4
 
                     arquivo.BaseStream.Seek(qtosBytesAPular, SeekOrigin.Begin);
 
+                    char[] umNome = new char[tamanhoNome];
+
+                    umNome = arquivo.ReadChars(tamanhoNome);
+                    string nomeLido = "";
+                    for (int i = 0; i < tamanhoNome; i++)
+                        nomeLido += umNome[i];
+                    this.Nome = nomeLido;
+
                     this.X = arquivo.ReadDouble();
                     this.Y = arquivo.ReadDouble();
 
@@ -77,10 +85,48 @@ namespace Proj4
         {
             if (arquivo != null)
             {
+                char[] umNome = new char[tamanhoNome];
+                for (int i = 0; i < tamanhoNome; i++)
+                    umNome[i] = Nome[i];
                 arquivo.Write(X);
                 arquivo.Write(Y);
             }
         }
-    }
 
+        public List<Ligacao> ListarLigacoes()
+        {
+            List<Ligacao> listaDeLigacoes = new List<Ligacao>();
+            NoLista<Ligacao> atual = ligacoes.Primeiro;
+            while (atual != null)
+            {
+                listaDeLigacoes.Add(atual.Info);
+                atual = atual.Prox;
+            }
+            return listaDeLigacoes;
+        }
+
+        // criar e excluir dado -> garantir a integridade da árvore de cidades e
+        // das ligações da outra cidade é responsabilidade do main
+
+        public bool CriarLigacao(Cidade destino, int distancia)
+        {
+            Ligacao novaLigacao = new Ligacao(this.Nome, destino.Nome, distancia);
+            if (ligacoes.ExisteDado(novaLigacao))
+            {
+                return false;
+            }
+            else
+            {
+                ligacoes.InserirAposFim(novaLigacao);
+                return true;
+            }
+        } 
+        public bool ExcluirLigacao(Cidade destino)
+        {
+            Ligacao ligacaoParaExcluir = new Ligacao(this.Nome, destino.Nome, 0);
+
+            return ligacoes.RemoverDado(ligacaoParaExcluir);
+        }
+    }
 }
+

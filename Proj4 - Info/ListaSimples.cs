@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AgendaAlfabetica
+namespace Proj4
 {
     public class ListaSimples<Dado>
         where Dado : IComparable<Dado>
