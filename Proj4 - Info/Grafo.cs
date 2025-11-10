@@ -9,7 +9,7 @@ namespace apGrafoDaSilva
 {
     class Grafo
     {
-        private const int NUM_VERTICES = 20;
+        private const int NUM_VERTICES = 200;
         private Vertice[] vertices;
         private int[,] adjMatrix;
         int numVerts;
