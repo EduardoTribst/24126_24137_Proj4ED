@@ -9,11 +9,14 @@ namespace Proj4
 {
     public partial class Form1 : Form
     {
-        Arvore<Cidade> arvore = new Arvore<Cidade>();
+        Arvore<Cidade> arvore;
+        Grafo grafoCaminhos;
 
         public Form1()
         {
             InitializeComponent();
+            arvore = new Arvore<Cidade>();
+            grafoCaminhos = new Grafo();
         }
 
         private void tpCadastro_Click(object sender, EventArgs e)
@@ -100,6 +103,10 @@ namespace Proj4
                     if (!arvore.Atual.Info.CriarLigacao(cidadeDestino, distancia))
                     {
                         MessageBox.Show("Erro ao adicionar a ligação: " + cidadeOrigem + " - " + cidadeDestino);
+                    }
+                    else
+                    {
+                        grafoCaminhos.NovoVertice(cidadeDestino);
                     }
                 }
             }
