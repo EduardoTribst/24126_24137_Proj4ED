@@ -326,8 +326,14 @@ namespace apGrafoDaSilva
         }
 
         public (List<(string rotulo, int distancia)>, int distanciaTotal) 
-            CaminhosComDistancias(int inicio, int fim)
+            CaminhosComDistancias(string rotuloInicio, string rotuloFim)
         {
+
+            int inicio, fim;
+
+            inicio = ObterIndiceVertice(rotuloInicio);
+            fim = ObterIndiceVertice(rotuloFim);
+
             foreach (var v in vertices)
             {
                 if (v != null) v.foiVisitado = false;
