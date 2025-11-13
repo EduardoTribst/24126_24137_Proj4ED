@@ -103,12 +103,15 @@ namespace Proj4
                     }
                 }
             }
+        }
+        void SalvarArquivos()
+        {
 
-            void SalvarArquivos()
-            {
-
-            }
         }
 
+        private void pbMapa_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
