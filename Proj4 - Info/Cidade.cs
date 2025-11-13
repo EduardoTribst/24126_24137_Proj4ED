@@ -25,6 +25,7 @@ namespace Proj4
             this.Nome = nome;
             this.x = x;
             this.y = y;
+            ligacoes = new ListaSimples<Ligacao>();
         }
         public override string ToString()
         {
@@ -36,6 +37,7 @@ namespace Proj4
             this.Nome = "";
             this.x = 0;
             this.y = 0;
+            ligacoes = new ListaSimples<Ligacao>();
         }
 
         public Cidade(string nome)
@@ -108,9 +110,9 @@ namespace Proj4
         // criar e excluir dado -> garantir a integridade da árvore de cidades e
         // das ligações da outra cidade é responsabilidade do main
 
-        public bool CriarLigacao(Cidade destino, int distancia)
+        public bool CriarLigacao(string destino, int distancia)
         {
-            Ligacao novaLigacao = new Ligacao(this.Nome, destino.Nome, distancia);
+            Ligacao novaLigacao = new Ligacao(this.Nome, destino, distancia);
             if (ligacoes.ExisteDado(novaLigacao))
             {
                 return false;
@@ -121,9 +123,9 @@ namespace Proj4
                 return true;
             }
         } 
-        public bool ExcluirLigacao(Cidade destino)
+        public bool ExcluirLigacao(string destino)
         {
-            Ligacao ligacaoParaExcluir = new Ligacao(this.Nome, destino.Nome, 0);
+            Ligacao ligacaoParaExcluir = new Ligacao(this.Nome, destino, 0);
 
             return ligacoes.RemoverDado(ligacaoParaExcluir);
         }

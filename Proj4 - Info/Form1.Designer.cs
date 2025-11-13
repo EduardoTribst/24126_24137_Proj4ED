@@ -380,7 +380,7 @@
             // 
             // txtNomeCidade
             // 
-            this.txtNomeCidade.Location = new System.Drawing.Point(123, 21);
+            this.txtNomeCidade.Location = new System.Drawing.Point(167, 20);
             this.txtNomeCidade.MaxLength = 25;
             this.txtNomeCidade.Name = "txtNomeCidade";
             this.txtNomeCidade.Size = new System.Drawing.Size(216, 28);

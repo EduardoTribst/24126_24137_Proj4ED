@@ -253,13 +253,14 @@ namespace apGrafoDaSilva
             int indice = 0;
 
             for (int j = 0; j < numVerts; j++)
+            {
                 if (!vertices[j].foiVisitado &&
                     percurso[j].distancia < menor)
                 {
                     menor = percurso[j].distancia;
                     indice = j;
                 }
-
+            }
             return indice;
         }
 
@@ -355,12 +356,13 @@ namespace apGrafoDaSilva
                 caminhos.Add((vertices[atual].rotulo, percurso[atual].distancia));
                 atual = percurso[atual].verticePai;
             }
+            // talvez tire esse ultimo add
             caminhos.Add((vertices[inicio].rotulo, 0));
+
             caminhos.Reverse();
 
             return (caminhos, percurso[fim].distancia);
         }
-
 
         private int ObterIndiceVertice(string rotulo)
         {
