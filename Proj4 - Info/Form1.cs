@@ -75,28 +75,16 @@ namespace Proj4
                 StreamReader arquivoLeitura = new StreamReader(nomeArquivo);
 
                 string linha, cidadeOrigem, cidadeDestino;
+                string cidadeAtual = null;
                 int distancia;
-                int indiceLinha = 0;
                 while (arquivoLeitura.EndOfStream == false)
                 {
                     linha = arquivoLeitura.ReadLine();
-
-                    while (linha[indiceLinha] != ';')
-                    {
-                        indiceLinha++;
-                    }
-
-                    cidadeOrigem = linha.Substring(0, indiceLinha);
-                    int fimCidadeOrigem = indiceLinha = indiceLinha + 1;
-
-                    while (linha[indiceLinha] != ';')
-                    {
-                        indiceLinha++;
-                    }
-
-                    cidadeDestino = linha.Substring(fimCidadeOrigem, indiceLinha);
-
-                    distancia = Convert.ToInt32(linha.Substring(indiceLinha + 1, linha.Length - 1));
+                    
+                    var valores = linha.Split(';');
+                    cidadeOrigem = valores[0];
+                    cidadeDestino = valores[1];
+                    distancia = Convert.ToInt32((string)valores[2]);
 
                     // debug
                     Console.WriteLine(linha);
@@ -104,7 +92,11 @@ namespace Proj4
                     Console.WriteLine(cidadeDestino);
                     Console.WriteLine(distancia);
 
-                    arvore.Existe(new Cidade(cidadeOrigem, 0, 0));
+                    if(cidadeAtual != cidadeOrigem)
+                    {
+                        arvore.Existe(new Cidade(cidadeOrigem, 0, 0));
+                        cidadeAtual = cidadeOrigem;
+                    }
                     if (!arvore.Atual.Info.CriarLigacao(cidadeDestino, distancia))
                     {
                         MessageBox.Show("Erro ao adicionar a ligação: " + cidadeOrigem + " - " + cidadeDestino);
