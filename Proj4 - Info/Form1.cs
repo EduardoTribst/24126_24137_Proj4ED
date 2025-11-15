@@ -13,12 +13,14 @@ namespace Proj4
     {
         ArvoreAVL<Cidade> arvore;
         Grafo grafoCaminhos;
+        List<string> caminhoDestacado; // usado para pintar o caminho no mapa
 
         public Form1()
         {
             InitializeComponent();
             arvore = new ArvoreAVL<Cidade>();
             grafoCaminhos = new Grafo();
+            caminhoDestacado = null;
         }
 
         private void tpCadastro_Click(object sender, EventArgs e)
@@ -196,6 +198,31 @@ namespace Proj4
                 Console.WriteLine($"{cidade.Nome}: {cidade.X}, {cidade.Y}");
             }
 
+            if (caminhoDestacado != null && caminhoDestacado.Count > 1)
+            {
+                Pen corDestaque = new Pen(Color.Blue, 4);
+
+                for (int i = 0; i < caminhoDestacado.Count - 1; i++)
+                {
+                    string nomeA = caminhoDestacado[i];
+                    string nomeB = caminhoDestacado[i + 1];
+
+                    arvore.Existe(new Cidade(nomeA, 0, 0));
+                    Cidade cidA = arvore.Atual.Info;
+
+                    arvore.Existe(new Cidade(nomeB, 0, 0));
+                    Cidade cidB = arvore.Atual.Info;
+
+                    if (cidA == null || cidB == null)
+                        continue;
+
+                    PointF p1 = Converter(cidA.X, cidA.Y, larguraAtual, alturaAtual);
+                    PointF p2 = Converter(cidB.X, cidB.Y, larguraAtual, alturaAtual);
+
+                    g.DrawLine(corDestaque, p1, p2);
+                }
+            }
+
             // funcao para manter a proporcao das coordenadas
             PointF Converter(double x, double y, double largAtual, double altAtual)
             {
@@ -205,5 +232,33 @@ namespace Proj4
             }
         }
 
+        private void btnBuscarCaminho_Click(object sender, EventArgs e)
+        {
+            string origem = txtNomeCidade.Text;
+            string destino = cbxCidadeDestino.Text;
+
+            (List<(String, int)>, int) resultadoCaminho = grafoCaminhos.CaminhosComDistancias(origem, destino);
+
+            int distTotal = resultadoCaminho.Item2;
+            List<(String, int)> caminho = resultadoCaminho.Item1;
+
+            // limpar grid
+            dgvRotas.Rows.Clear();
+
+            // preencher grid
+            foreach (var item in caminho)
+            {
+                string nomeCidade = item.Item1;
+                int dist = item.Item2;
+
+                dgvRotas.Rows.Add(nomeCidade, dist);
+            }
+
+            lbDistanciaTotal.Text = "Distância total: " + distTotal.ToString() + " km";
+
+            // salva o caminho e atualiza o mapa
+            caminhoDestacado = caminho.Select(c => c.Item1).ToList();
+            pbMapa.Invalidate();
+        }
     }
 }
