@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arvore.cs" />
     <Compile Include="ArvoreAVL.cs" />
     <Compile Include="Cidade.cs" />
     <Compile Include="DistOriginal.cs" />
@@ -62,7 +61,6 @@
     <Compile Include="IRegistro.cs" />
     <Compile Include="Ligacao.cs" />
     <Compile Include="ListaSimples.cs" />
-    <Compile Include="NoArvore.cs" />
     <Compile Include="NoArvoreAVL.cs" />
     <Compile Include="NoLista.cs" />
     <Compile Include="Program.cs" />

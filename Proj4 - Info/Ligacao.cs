@@ -7,6 +7,10 @@ namespace Proj4
         string origem, destino;
         int distancia;
 
+        public string Origem { get => origem; }
+        public string Destino { get => destino; }
+        public int Distancia { get => distancia; }
+
         public Ligacao(string origem, string destino, int distancia)
         {
             this.origem = origem;
