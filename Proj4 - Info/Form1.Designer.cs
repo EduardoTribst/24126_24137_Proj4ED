@@ -104,7 +104,6 @@
             this.tpCadastro.TabIndex = 0;
             this.tpCadastro.Text = "Cidades e Caminhos";
             this.tpCadastro.UseVisualStyleBackColor = true;
-            this.tpCadastro.Click += new System.EventHandler(this.tpCadastro_Click);
             // 
             // groupBox3
             // 
@@ -380,7 +379,6 @@
             this.label2.Size = new System.Drawing.Size(122, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "X proporcional:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtNomeCidade
             // 
@@ -446,7 +444,6 @@
             this.pnlArvore.Name = "pnlArvore";
             this.pnlArvore.Size = new System.Drawing.Size(1641, 828);
             this.pnlArvore.TabIndex = 0;
-            this.pnlArvore.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlArvore_Paint);
             // 
             // dlgAbrir
             // 

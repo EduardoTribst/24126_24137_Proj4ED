@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Proj4
@@ -12,7 +14,7 @@ namespace Proj4
     {
         ArvoreAVL<Cidade> arvore;
         Grafo grafoCaminhos;
-        List<string> caminhoDestacado; // usado para pintar o caminho no mapa
+        List<string> caminhoDestacado;
         bool processoInclusaoCidade;
 
         public Form1()
@@ -24,31 +26,19 @@ namespace Proj4
             processoInclusaoCidade = false;
         }
 
-        private void tpCadastro_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             LerArquivos();
-        }
-
-        private void pnlArvore_Paint(object sender, PaintEventArgs e)
-        {
-            arvore.Desenhar(pnlArvore);
         }
 
         private void txtNomeCidade_Leave(object sender, EventArgs e)
         {
             if (processoInclusaoCidade)
             {
-                string nomeCidade = txtNomeCidade.Text.Trim();
+                string nomeCidade = RemoverAcentos(txtNomeCidade.Text.Trim());
+
+                txtNomeCidade.Text = nomeCidade;
+
                 if (nomeCidade == "")
                 {
                     MessageBox.Show("Nome da cidade não pode ser vazio.");
@@ -89,7 +79,6 @@ namespace Proj4
             if (dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 string nomeArquivoLigacoes = dlgAbrir.FileName;
-
                 LerArquivoLigacoes(nomeArquivoLigacoes);
             }
             else
@@ -97,89 +86,80 @@ namespace Proj4
                 MessageBox.Show("Selecione um arquivo");
                 return;
             }
+        }
 
-            void LerArquivoLigacoes(string nomeArquivo)
+        private void LerArquivoLigacoes(string nomeArquivo)
+        {
+            StreamReader arquivoLeitura = new StreamReader(nomeArquivo);
+
+            string linha;
+            string cidadeAtual = null;
+            Cidade cidadeOrigemObj = null;
+
+            while (!arquivoLeitura.EndOfStream)
             {
-                StreamReader arquivoLeitura = new StreamReader(nomeArquivo);
+                linha = arquivoLeitura.ReadLine();
+                var valores = linha.Split(';');
 
-                string linha;
-                string cidadeAtual = null;
-                Cidade cidadeOrigemObj = null;   // cache da cidade atual
+                string cidadeOrigem = RemoverAcentos(valores[0]);
+                string cidadeDestino = RemoverAcentos(valores[1]);
+                int distancia = Convert.ToInt32(valores[2]);
 
-                while (!arquivoLeitura.EndOfStream)
+                if (cidadeAtual != cidadeOrigem)
                 {
-                    linha = arquivoLeitura.ReadLine();
-                    var valores = linha.Split(';');
-
-                    string cidadeOrigem = valores[0];
-                    string cidadeDestino = valores[1];
-                    int distancia = Convert.ToInt32(valores[2]);
-
-                    // verifica se a cidade origem mudou
-                    if (cidadeAtual != cidadeOrigem)
-                    {
-                        if (arvore.Existe(new Cidade(cidadeOrigem, 0, 0)))
-                        {
-                            cidadeOrigemObj = arvore.Atual.Info;
-                        }
-                        else
-                        {
-                            cidadeOrigemObj = null;
-                        }
-                        cidadeAtual = cidadeOrigem;
-                    }
-                    // nao existe
-                    if (cidadeOrigemObj == null)
-                        continue;
-
-                    // verifica o destino
-                    Cidade cidadeDestinoObj;
-                    if (arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
-                    {
-                        cidadeDestinoObj = arvore.Atual.Info;
-                    }
+                    if (arvore.Existe(new Cidade(cidadeOrigem, 0, 0)))
+                        cidadeOrigemObj = arvore.Atual.Info;
                     else
-                    {
-                        cidadeDestinoObj = null;
-                    }
+                        cidadeOrigemObj = null;
 
-                    if (cidadeDestinoObj == null)
-                        continue;
-
-                    bool ok1 = cidadeOrigemObj.CriarLigacao(cidadeDestino, distancia);
-                    bool ok2 = cidadeDestinoObj.CriarLigacao(cidadeOrigem, distancia);
-
-                    if (!ok1 || !ok2)
-                    {
-                        MessageBox.Show("Erro ao adicionar ligação: " + cidadeOrigem + " - " + cidadeDestino);
-                        continue;
-                    }
-
-                    int idxOrigem = grafoCaminhos.ObterIndiceVertice(cidadeOrigem);
-                    if (idxOrigem == -1)
-                        grafoCaminhos.NovoVertice(cidadeOrigem);
-
-                    int idxDestino = grafoCaminhos.ObterIndiceVertice(cidadeDestino);
-                    if (idxDestino == -1)
-                        grafoCaminhos.NovoVertice(cidadeDestino);
-
-                    idxOrigem = grafoCaminhos.ObterIndiceVertice(cidadeOrigem);
-                    idxDestino = grafoCaminhos.ObterIndiceVertice(cidadeDestino);
-
-                    // Cria aresta no grafo
-                    grafoCaminhos.NovaAresta(idxOrigem, idxDestino, distancia, bidirecional:true);
+                    cidadeAtual = cidadeOrigem;
                 }
-                arquivoLeitura.Close();
+
+                if (cidadeOrigemObj == null)
+                    continue;
+
+                Cidade cidadeDestinoObj;
+
+                if (arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
+                    cidadeDestinoObj = arvore.Atual.Info;
+                else
+                    cidadeDestinoObj = null;
+
+                if (cidadeDestinoObj == null)
+                    continue;
+
+                bool ok1 = cidadeOrigemObj.CriarLigacao(cidadeDestino, distancia);
+                bool ok2 = cidadeDestinoObj.CriarLigacao(cidadeOrigem, distancia);
+
+                if (!ok1 || !ok2)
+                {
+                    MessageBox.Show("Erro ao adicionar ligação: " + cidadeOrigem + " - " + cidadeDestino);
+                    continue;
+                }
+
+                int idxOrigem = grafoCaminhos.ObterIndiceVertice(cidadeOrigem);
+                if (idxOrigem == -1)
+                    grafoCaminhos.NovoVertice(cidadeOrigem);
+
+                int idxDestino = grafoCaminhos.ObterIndiceVertice(cidadeDestino);
+                if (idxDestino == -1)
+                    grafoCaminhos.NovoVertice(cidadeDestino);
+
+                idxOrigem = grafoCaminhos.ObterIndiceVertice(cidadeOrigem);
+                idxDestino = grafoCaminhos.ObterIndiceVertice(cidadeDestino);
+
+                grafoCaminhos.NovaAresta(idxOrigem, idxDestino, distancia, bidirecional: true);
             }
 
+            arquivoLeitura.Close();
         }
+
         void SalvarArquivos()
         {
             dlgAbrir.Title = "Selecione o arquivo binário de cidades para salvar";
             if (dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 string nomeArquivoCidades = dlgAbrir.FileName;
-
                 arvore.GravarArquivoDeRegistros(nomeArquivoCidades);
             }
             else
@@ -192,7 +172,6 @@ namespace Proj4
             if (dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 string nomeArquivoLigacoes = dlgAbrir.FileName;
-
                 SalvarArquivoLigacoes(nomeArquivoLigacoes);
             }
             else
@@ -200,18 +179,18 @@ namespace Proj4
                 MessageBox.Show("Selecione um arquivo");
                 return;
             }
+        }
 
-            void SalvarArquivoLigacoes(string nomeArquivo)
-            {
-                StreamWriter arquivoEscrita = new StreamWriter(nomeArquivo);
-                List<Cidade> listaCidades = new List<Cidade>();
-                arvore.VisitarEmOrdem(ref listaCidades);
-                foreach (Cidade cidade in listaCidades)
-                {
-                    cidade.SalvarLigacoes(arquivoEscrita);
-                }
-                arquivoEscrita.Close();
-            }
+        private void SalvarArquivoLigacoes(string nomeArquivo)
+        {
+            StreamWriter arquivoEscrita = new StreamWriter(nomeArquivo);
+            List<Cidade> listaCidades = new List<Cidade>();
+            arvore.VisitarEmOrdem(ref listaCidades);
+
+            foreach (Cidade cidade in listaCidades)
+                cidade.SalvarLigacoes(arquivoEscrita);
+
+            arquivoEscrita.Close();
         }
 
         private void pbMapa_Paint(object sender, PaintEventArgs e)
@@ -220,7 +199,6 @@ namespace Proj4
             double larguraAtual = pbMapa.Width;
             double alturaAtual = pbMapa.Height;
 
-            // lista das cidades na arvore
             List<Cidade> listaCidades = new List<Cidade>();
             arvore.VisitarEmOrdem(ref listaCidades);
 
@@ -230,10 +208,8 @@ namespace Proj4
 
             foreach (Cidade cidade in listaCidades)
             {
-                // calcula a posicao no mapa
                 PointF origem = Converter(cidade.X, cidade.Y, larguraAtual, alturaAtual);
 
-                // desenha as ligacoes
                 foreach (Ligacao ligacao in cidade.ListarLigacoes())
                 {
                     arvore.Existe(new Cidade(ligacao.Destino, 0, 0));
@@ -241,15 +217,11 @@ namespace Proj4
                         continue;
 
                     PointF destino = Converter(arvore.Atual.Info.X, arvore.Atual.Info.Y, larguraAtual, alturaAtual);
-
                     g.DrawLine(corCaminhos, origem, destino);
                 }
 
-                //desenha a cidade
                 g.FillEllipse(corCidade, origem.X - 4, origem.Y - 4, 8, 8);
                 g.DrawString(cidade.Nome, fonte, Brushes.Black, origem.X + 6, origem.Y - 6);
-
-                Console.WriteLine($"{cidade.Nome}: {cidade.X}, {cidade.Y}");
             }
 
             if (caminhoDestacado != null && caminhoDestacado.Count > 1)
@@ -277,7 +249,6 @@ namespace Proj4
                 }
             }
 
-            // funcao para manter a proporcao das coordenadas
             PointF Converter(double x, double y, double largAtual, double altAtual)
             {
                 float novoX = (float)(x * largAtual);
@@ -288,29 +259,22 @@ namespace Proj4
 
         private void btnBuscarCaminho_Click(object sender, EventArgs e)
         {
-            string origem = txtNomeCidade.Text;
-            string destino = cbxCidadeDestino.Text;
+            string origem = RemoverAcentos(txtNomeCidade.Text.Trim());
+            string destino = RemoverAcentos(cbxCidadeDestino.Text.Trim());
 
-            (List<(String, int)>, int) resultadoCaminho = grafoCaminhos.CaminhosComDistancias(origem, destino);
+            (List<(String, int)>, int) resultadoCaminho =
+                grafoCaminhos.CaminhosComDistancias(origem, destino);
 
             int distTotal = resultadoCaminho.Item2;
             List<(String, int)> caminho = resultadoCaminho.Item1;
 
-            // limpar grid
             dgvRotas.Rows.Clear();
 
-            // preencher grid
             foreach (var item in caminho)
-            {
-                string nomeCidade = item.Item1;
-                int dist = item.Item2;
+                dgvRotas.Rows.Add(item.Item1, item.Item2);
 
-                dgvRotas.Rows.Add(nomeCidade, dist);
-            }
+            lbDistanciaTotal.Text = $"Distância total: {distTotal} km";
 
-            lbDistanciaTotal.Text = $"Distância total: {distTotal.ToString()} km";
-
-            // salva o caminho e atualiza o mapa
             caminhoDestacado = caminho.Select(c => c.Item1).ToList();
             pbMapa.Invalidate();
         }
@@ -318,21 +282,18 @@ namespace Proj4
         private void btnIncluirCidade_Click(object sender, EventArgs e)
         {
             if (!processoInclusaoCidade)
-            {
                 IniciarInclusao();
-            }
             else
-            {
                 TerminarInclusao();
-            }
         }
 
         private void IniciarInclusao()
         {
             processoInclusaoCidade = true;
+
             MessageBox.Show("Processo de inclusão iniciado.\n" +
-                "Digite o nome da cidadade no campo e clique no mapa para definir a localização.\n" +
-                "Para cancelar o processo, clique novamente no botão de incluir cidade.");
+                "Digite o nome da cidade e clique no mapa para definir a localização.\n" +
+                "Para cancelar, clique novamente no botão.");
 
             udX.Value = 0;
             udY.Value = 0;
@@ -346,38 +307,52 @@ namespace Proj4
         private void TerminarInclusao()
         {
             processoInclusaoCidade = false;
-            MessageBox.Show("Processo de inclusão terminado");
+            pbMapa.Cursor = Cursors.Default;
 
             btnBuscarCidade.Enabled = true;
             btnAlterarCidade.Enabled = true;
             btnExcluirCidade.Enabled = true;
         }
 
+        private string RemoverAcentos(string texto)
+        {
+            string novoTexto = "";
+            string textoNormalize = texto.Normalize(NormalizationForm.FormD);
+
+            foreach (var letra in textoNormalize)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(letra) != UnicodeCategory.NonSpacingMark)
+                    novoTexto += letra;
+            }
+
+            return novoTexto.Normalize(NormalizationForm.FormC);
+        }
+
         private void pbMapa_MouseClick(object sender, MouseEventArgs e)
         {
             if (processoInclusaoCidade)
             {
-                // verifica se o usuario ainda nao digitou o nome da cidade e buscou se existe
                 if (txtNomeCidade.Text.Trim() == "")
                 {
                     MessageBox.Show("Digite o nome da cidade antes de clicar no mapa.");
                     return;
                 }
 
-                // pega as coordenadas do click proporcionais
+                string nomeCidade = RemoverAcentos(txtNomeCidade.Text.Trim());
+                txtNomeCidade.Text = nomeCidade;
+
                 double xProporcional = (double)e.X / pbMapa.Width;
                 double yProporcional = (double)e.Y / pbMapa.Height;
 
                 udX.Value = (decimal)xProporcional;
                 udY.Value = (decimal)yProporcional;
 
-                if (MessageBox.Show("Confirma a inclusão da cidade " + txtNomeCidade.Text + "?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"Confirma a inclusão da cidade {nomeCidade}?",
+                    "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    // insere na árvore
-                    Cidade novaCidade = new Cidade(txtNomeCidade.Text.Trim(), xProporcional, yProporcional);
+                    Cidade novaCidade = new Cidade(nomeCidade, xProporcional, yProporcional);
                     arvore.InserirBalanceado(novaCidade);
 
-                    // desenha a arvore
                     TerminarInclusao();
                     pbMapa.Invalidate();
                 }
@@ -390,7 +365,8 @@ namespace Proj4
 
         private void btnBuscarCidade_Click(object sender, EventArgs e)
         {
-            string nomeCidade = txtNomeCidade.Text.Trim();
+            string nomeCidade = RemoverAcentos(txtNomeCidade.Text.Trim());
+            txtNomeCidade.Text = nomeCidade;
 
             if (nomeCidade != "")
             {
@@ -401,11 +377,10 @@ namespace Proj4
 
                     dgvLigacoes.Rows.Clear();
                     cbxCidadeDestino.Items.Clear();
-                    foreach ( Ligacao ligacao in arvore.Atual.Info.ListarLigacoes())
+
+                    foreach (Ligacao ligacao in arvore.Atual.Info.ListarLigacoes())
                     {
-                        // adiciona no dgv
                         dgvLigacoes.Rows.Add(ligacao.Destino, ligacao.Distancia);
-                        // adiciona no select de destinos
                         cbxCidadeDestino.Items.Add(ligacao.Destino);
                     }
                 }
