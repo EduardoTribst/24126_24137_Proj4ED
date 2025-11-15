@@ -102,37 +102,76 @@ namespace Proj4
             {
                 StreamReader arquivoLeitura = new StreamReader(nomeArquivo);
 
-                string linha, cidadeOrigem, cidadeDestino;
+                string linha;
                 string cidadeAtual = null;
-                int distancia;
-                while (arquivoLeitura.EndOfStream == false)
+                Cidade cidadeOrigemObj = null;   // cache da cidade atual
+
+                while (!arquivoLeitura.EndOfStream)
                 {
                     linha = arquivoLeitura.ReadLine();
-
                     var valores = linha.Split(';');
-                    cidadeOrigem = valores[0];
-                    cidadeDestino = valores[1];
-                    distancia = Convert.ToInt32((string)valores[2]);
 
-                    if (cidadeAtual != cidadeOrigem && arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
+                    string cidadeOrigem = valores[0];
+                    string cidadeDestino = valores[1];
+                    int distancia = Convert.ToInt32(valores[2]);
+
+                    // verifica se a cidade origem mudou
+                    if (cidadeAtual != cidadeOrigem)
                     {
-                        arvore.Existe(new Cidade(cidadeOrigem, 0, 0));
-                        cidadeAtual = cidadeOrigem;
-                    }
-                    if (arvore.Atual != null)
-                    {
-                        if (!arvore.Atual.Info.CriarLigacao(cidadeDestino, distancia))
+                        if (arvore.Existe(new Cidade(cidadeOrigem, 0, 0)))
                         {
-                            MessageBox.Show("Erro ao adicionar a ligação: " + cidadeOrigem + " - " + cidadeDestino);
+                            cidadeOrigemObj = arvore.Atual.Info;
                         }
                         else
                         {
-                            grafoCaminhos.NovoVertice(cidadeDestino);
+                            cidadeOrigemObj = null;
                         }
+                        cidadeAtual = cidadeOrigem;
                     }
+                    // nao existe
+                    if (cidadeOrigemObj == null)
+                        continue;
+
+                    // verifica o destino
+                    Cidade cidadeDestinoObj;
+                    if (arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
+                    {
+                        cidadeDestinoObj = arvore.Atual.Info;
+                    }
+                    else
+                    {
+                        cidadeDestinoObj = null;
+                    }
+
+                    if (cidadeDestinoObj == null)
+                        continue;
+
+                    bool ok1 = cidadeOrigemObj.CriarLigacao(cidadeDestino, distancia);
+                    bool ok2 = cidadeDestinoObj.CriarLigacao(cidadeOrigem, distancia);
+
+                    if (!ok1 || !ok2)
+                    {
+                        MessageBox.Show("Erro ao adicionar ligação: " + cidadeOrigem + " - " + cidadeDestino);
+                        continue;
+                    }
+
+                    int idxOrigem = grafoCaminhos.ObterIndiceVertice(cidadeOrigem);
+                    if (idxOrigem == -1)
+                        grafoCaminhos.NovoVertice(cidadeOrigem);
+
+                    int idxDestino = grafoCaminhos.ObterIndiceVertice(cidadeDestino);
+                    if (idxDestino == -1)
+                        grafoCaminhos.NovoVertice(cidadeDestino);
+
+                    idxOrigem = grafoCaminhos.ObterIndiceVertice(cidadeOrigem);
+                    idxDestino = grafoCaminhos.ObterIndiceVertice(cidadeDestino);
+
+                    // Cria aresta no grafo
+                    grafoCaminhos.NovaAresta(idxOrigem, idxDestino, distancia, bidirecional:true);
                 }
                 arquivoLeitura.Close();
             }
+
         }
         void SalvarArquivos()
         {

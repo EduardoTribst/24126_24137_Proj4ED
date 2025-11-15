@@ -1,5 +1,4 @@
 ﻿using Proj4;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -36,17 +35,21 @@ namespace apGrafoDaSilva
             vertices[numVerts] = new Vertice(rotulo);
             numVerts++;
         }
-
-        public void NovaAresta(int origem, int destino)
+        public void NovaAresta(int origem, int destino, bool bidirecional = false)
         {
             adjMatrix[origem, destino] = 1;
+
+            if (bidirecional)
+                adjMatrix[destino, origem] = 1;
         }
 
-        public void NovaAresta(int origem, int destino, int peso)
+        public void NovaAresta(int origem, int destino, int peso, bool bidirecional = false)
         {
             adjMatrix[origem, destino] = peso;
-        }
 
+            if (bidirecional)
+                adjMatrix[destino, origem] = peso;
+        }
         private void MoverLinhas(int row, int length)
         {
             if (row != numVerts - 1)
@@ -325,7 +328,7 @@ namespace apGrafoDaSilva
             return string.Join(" --> ", caminho);
         }
 
-        public (List<(string rotulo, int distancia)>, int distanciaTotal) 
+        public (List<(string rotulo, int distancia)>, int distanciaTotal)
             CaminhosComDistancias(string rotuloInicio, string rotuloFim)
         {
 
@@ -370,14 +373,14 @@ namespace apGrafoDaSilva
             return (caminhos, percurso[fim].distancia);
         }
 
-        private int ObterIndiceVertice(string rotulo)
+        public int ObterIndiceVertice(string rotulo)
         {
             for (int i = 0; i < numVerts; i++)
             {
                 if (vertices[i].rotulo == rotulo)
                     return i;
             }
-                
+
             return -1;
         }
     }
