@@ -111,11 +111,51 @@ namespace Proj4
                         grafoCaminhos.NovoVertice(cidadeDestino);
                     }
                 }
+                arquivoLeitura.Close();
             }
         }
         void SalvarArquivos()
         {
+            dlgAbrir.Title = "Selecione o arquivo binário de cidades para salvar";
+            if (dlgAbrir.ShowDialog() == DialogResult.OK)
+            {
+                string nomeArquivoCidades = dlgAbrir.FileName;
 
+                arvore.GravarArquivoDeRegistros(nomeArquivoCidades);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um arquivo");
+                return;
+            }
+
+            dlgAbrir.Title = "Selecione o arquivo texto de ligações para salvar";
+            if (dlgAbrir.ShowDialog() == DialogResult.OK)
+            {
+                string nomeArquivoLigacoes = dlgAbrir.FileName;
+
+                SalvarArquivoLigacoes(nomeArquivoLigacoes);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um arquivo");
+                return;
+            }
+
+            void SalvarArquivoLigacoes(string nomeArquivo)
+            {
+                StreamWriter arquivoEscrita = new StreamWriter(nomeArquivo);
+                List<Cidade> listaCidades = new List<Cidade>();
+                arvore.VisitarEmOrdem(ref listaCidades);
+                foreach (Cidade cidade in listaCidades)
+                {
+                    foreach (Ligacao ligacao in cidade.ListarLigacoes())
+                    {
+                        arquivoEscrita.WriteLine(cidade.Nome + ";" + ligacao.Destino + ";" + ligacao.Distancia);
+                    }
+                }
+                arquivoEscrita.Close();
+            }
         }
 
         private void pbMapa_Paint(object sender, PaintEventArgs e)
