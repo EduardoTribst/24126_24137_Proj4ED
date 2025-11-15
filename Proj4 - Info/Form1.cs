@@ -114,12 +114,6 @@ namespace Proj4
                     cidadeDestino = valores[1];
                     distancia = Convert.ToInt32((string)valores[2]);
 
-                    // debug
-                    Console.WriteLine(linha);
-                    Console.WriteLine(cidadeOrigem);
-                    Console.WriteLine(cidadeDestino);
-                    Console.WriteLine(distancia);
-
                     if (cidadeAtual != cidadeOrigem && arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
                     {
                         arvore.Existe(new Cidade(cidadeOrigem, 0, 0));
@@ -352,6 +346,38 @@ namespace Proj4
                 {
                     TerminarInclusao();
                 }
+            }
+        }
+
+        private void btnBuscarCidade_Click(object sender, EventArgs e)
+        {
+            string nomeCidade = txtNomeCidade.Text.Trim();
+
+            if (nomeCidade != "")
+            {
+                if (arvore.Existe(new Cidade(nomeCidade, 0, 0)))
+                {
+                    udX.Value = (decimal)arvore.Atual.Info.X;
+                    udY.Value = (decimal)arvore.Atual.Info.Y;
+
+                    dgvLigacoes.Rows.Clear();
+                    cbxCidadeDestino.Items.Clear();
+                    foreach ( Ligacao ligacao in arvore.Atual.Info.ListarLigacoes())
+                    {
+                        // adiciona no dgv
+                        dgvLigacoes.Rows.Add(ligacao.Destino, ligacao.Distancia);
+                        // adiciona no select de destinos
+                        cbxCidadeDestino.Items.Add(ligacao.Destino);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cidade não encontrada.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Digite o nome da cidade para buscar.");
             }
         }
     }
