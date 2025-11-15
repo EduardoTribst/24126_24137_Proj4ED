@@ -107,6 +107,14 @@ namespace Proj4
             return listaDeLigacoes;
         }
 
+        public void SalvarLigacoes(StreamWriter arquivo)
+        {
+            foreach (Ligacao ligacao in ListarLigacoes())
+            {
+                arquivo.WriteLine(ligacao.ToString());
+            }
+        }
+
         // criar e excluir dado -> garantir a integridade da árvore de cidades e
         // das ligações da outra cidade é responsabilidade do main
 

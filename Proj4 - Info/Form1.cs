@@ -149,10 +149,7 @@ namespace Proj4
                 arvore.VisitarEmOrdem(ref listaCidades);
                 foreach (Cidade cidade in listaCidades)
                 {
-                    foreach (Ligacao ligacao in cidade.ListarLigacoes())
-                    {
-                        arquivoEscrita.WriteLine(cidade.Nome + ";" + ligacao.Destino + ";" + ligacao.Distancia);
-                    }
+                    cidade.SalvarLigacoes(arquivoEscrita);
                 }
                 arquivoEscrita.Close();
             }

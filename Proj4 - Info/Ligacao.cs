@@ -22,5 +22,10 @@ namespace Proj4
         {
             return (origem + destino).CompareTo(other.origem + other.destino);
         }
+
+        public override string ToString()
+        {
+            return origem + ";" + destino + ";" + distancia;
+        }
     }
 }
