@@ -53,13 +53,3 @@ Votuporanga;Rubinéia;115
 São José do Rio Preto;Votuporanga;84
 Limeira;Ribeirão Preto;182
 Limeira;Rio Claro;40
-
-
-
-
-
-
-
-
-
-

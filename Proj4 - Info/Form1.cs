@@ -33,7 +33,7 @@ namespace Proj4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            LerArquivos();
         }
 
         private void pnlArvore_Paint(object sender, PaintEventArgs e)
@@ -97,18 +97,21 @@ namespace Proj4
                     Console.WriteLine(cidadeDestino);
                     Console.WriteLine(distancia);
 
-                    if(cidadeAtual != cidadeOrigem)
+                    if(cidadeAtual != cidadeOrigem && arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
                     {
                         arvore.Existe(new Cidade(cidadeOrigem, 0, 0));
                         cidadeAtual = cidadeOrigem;
                     }
-                    if (!arvore.Atual.Info.CriarLigacao(cidadeDestino, distancia))
+                    if (arvore.Atual != null)
                     {
-                        MessageBox.Show("Erro ao adicionar a ligação: " + cidadeOrigem + " - " + cidadeDestino);
-                    }
-                    else
-                    {
-                        grafoCaminhos.NovoVertice(cidadeDestino);
+                        if (!arvore.Atual.Info.CriarLigacao(cidadeDestino, distancia))
+                        {
+                            MessageBox.Show("Erro ao adicionar a ligação: " + cidadeOrigem + " - " + cidadeDestino);
+                        }
+                        else
+                        {
+                            grafoCaminhos.NovoVertice(cidadeDestino);
+                        }
                     }
                 }
                 arquivoLeitura.Close();
@@ -160,8 +163,6 @@ namespace Proj4
             Graphics g = e.Graphics;
             double larguraAtual = pbMapa.Width;
             double alturaAtual = pbMapa.Height;
-            const double larguraOriginal = 2560.0;
-            const double alturaOriginal = 1600.0;
 
             // lista das cidades na arvore
             List<Cidade> listaCidades = new List<Cidade>();
@@ -171,40 +172,38 @@ namespace Proj4
             Brush corCidade = new SolidBrush(Color.Red);
             Font fonte = new Font("Arial", 10, FontStyle.Bold);
 
-            // desenha os caminhos
             foreach (Cidade cidade in listaCidades)
             {
+                // calcula a posicao no mapa
                 PointF origem = Converter(cidade.X, cidade.Y, larguraAtual, alturaAtual);
 
+                // desenha as ligacoes
                 foreach (Ligacao ligacao in cidade.ListarLigacoes())
                 {
                     arvore.Existe(new Cidade(ligacao.Destino, 0, 0));
-                    Cidade destinoObj = arvore.Atual.Info;
-                    if (destinoObj == null)
+                    if (arvore.Atual == null)
                         continue;
 
-                    PointF destino = Converter(destinoObj.X, destinoObj.Y, larguraAtual, alturaAtual);
+                    PointF destino = Converter(arvore.Atual.Info.X, arvore.Atual.Info.Y, larguraAtual, alturaAtual);
 
                     g.DrawLine(corCaminhos, origem, destino);
                 }
-            }
-            
-            // desenha as ciades
-            foreach (Cidade cidade in listaCidades)
-            {
-                PointF p = Converter(cidade.X, cidade.Y, larguraAtual, alturaAtual);
 
-                g.FillEllipse(corCidade, p.X - 4, p.Y - 4, 8, 8);
-                g.DrawString(cidade.Nome, fonte, Brushes.Black, p.X + 6, p.Y - 6);
+                //desenha a cidade
+                g.FillEllipse(corCidade, origem.X - 4, origem.Y - 4, 8, 8);
+                g.DrawString(cidade.Nome, fonte, Brushes.Black, origem.X + 6, origem.Y - 6);
+
+                Console.WriteLine($"{cidade.Nome}: {cidade.X}, {cidade.Y}");
             }
 
             // funcao para manter a proporcao das coordenadas
             PointF Converter(double x, double y, double largAtual, double altAtual)
             {
-                float novoX = (float)((x / larguraOriginal) * largAtual);
-                float novoY = (float)((y / alturaOriginal) * altAtual);
+                float novoX = (float)(x * largAtual);
+                float novoY = (float)(y * altAtual);
                 return new PointF(novoX, novoY);
             }
         }
+
     }
 }
