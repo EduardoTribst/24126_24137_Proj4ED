@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|c:\\users\\cooki\\documents\\github\\24126_24137_proj4ed\\proj4 - info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|c:\\users\\cooki\\documents\\github\\24126_24137_proj4ed\\proj4 - info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -23,12 +19,16 @@
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:ligacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\grafo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:grafo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -114,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Cidade.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Cidade.cs",
               "RelativeDocumentMoniker": "Cidade.cs",
@@ -122,62 +122,60 @@
               "RelativeToolTip": "Cidade.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAWwIAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T01:32:45.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T01:32:45.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAKYAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAqwAQBAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T13:16:39.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Ligacao.cs",
-              "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Ligacao.cs",
-              "RelativeDocumentMoniker": "Ligacao.cs",
-              "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Ligacao.cs",
-              "RelativeToolTip": "Ligacao.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAywBkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T00:59:25.634Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ArvoreAVL.cs",
-              "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
-              "RelativeDocumentMoniker": "ArvoreAVL.cs",
-              "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
-              "RelativeToolTip": "ArvoreAVL.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAAANgAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T00:36:26.943Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:36:21.411Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-13T11:36:21.411Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
+              "Title": "Ligacao.cs",
+              "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Ligacao.cs",
+              "RelativeDocumentMoniker": "Ligacao.cs",
+              "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Ligacao.cs",
+              "RelativeToolTip": "Ligacao.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAswBkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T00:59:25.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArvoreAVL.cs",
+              "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
+              "RelativeDocumentMoniker": "ArvoreAVL.cs",
+              "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
+              "RelativeToolTip": "ArvoreAVL.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAC0AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T00:36:26.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Vertice.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Vertice.cs",
               "RelativeDocumentMoniker": "Vertice.cs",

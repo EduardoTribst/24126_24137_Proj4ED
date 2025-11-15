@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|c:\\users\\cooki\\documents\\github\\24126_24137_proj4ed\\proj4 - info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:grafo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -126,32 +126,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAqwAMBAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAqwAQBAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T13:16:39.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:36:21.411Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-13T11:36:21.411Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Ligacao.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Ligacao.cs",
               "RelativeDocumentMoniker": "Ligacao.cs",
@@ -159,24 +158,24 @@
               "RelativeToolTip": "Ligacao.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAswBkAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T00:59:25.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T00:59:25.634Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "ArvoreAVL.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
               "RelativeDocumentMoniker": "ArvoreAVL.cs",
               "ToolTip": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
               "RelativeToolTip": "ArvoreAVL.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAAANgAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAADwAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T00:36:26.943Z"
+              "WhenOpened": "2025-11-15T00:36:26.943Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Vertice.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Vertice.cs",
               "RelativeDocumentMoniker": "Vertice.cs",
@@ -184,12 +183,11 @@
               "RelativeToolTip": "Vertice.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T13:10:43.877Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-13T13:10:43.877Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Grafo.cs",
               "DocumentMoniker": "C:\\Users\\cooki\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Grafo.cs",
               "RelativeDocumentMoniker": "Grafo.cs",
@@ -197,8 +195,7 @@
               "RelativeToolTip": "Grafo.cs",
               "ViewState": "AgIAADgBAAAAAAAAAAAAAFUBAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:34:18.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-13T11:34:18.211Z"
             }
           ]
         }

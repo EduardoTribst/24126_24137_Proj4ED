@@ -43,7 +43,7 @@ public class ArvoreAVL<Dado>
 
         Graphics g = tela.CreateGraphics();
         g.Clear(Color.White);
-        DesenharNo(g, Raiz, tela.Width / 2, 20, tela.Width / 4, 50);
+        DesenharNo(g, Raiz, tela.Width / 2, 20, tela.Width / 5, 50);
     }
 
     private void DesenharNo(Graphics g, NoArvoreAVL<Dado> no, int x, int y, int deslocamentoX, int deslocamentoY)
@@ -53,7 +53,7 @@ public class ArvoreAVL<Dado>
         Rectangle rect = new Rectangle(x - 15, y - 15, 40, 30);
         g.FillEllipse(Brushes.LightBlue, rect);
         g.DrawEllipse(Pens.Black, rect);
-        g.DrawString(no.Info.ToString(), new Font("Arial", 10), Brushes.Black, x - 10, y - 10);
+        g.DrawString(no.Info.ToString(), new Font("Arial", 8), Brushes.Black, x - 10, y - 10);
 
         if (no.Esq != null)
         {

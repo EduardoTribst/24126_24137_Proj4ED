@@ -254,7 +254,7 @@ namespace Proj4
                 dgvRotas.Rows.Add(nomeCidade, dist);
             }
 
-            lbDistanciaTotal.Text = "Distância total: " + distTotal.ToString() + " km";
+            lbDistanciaTotal.Text = $"Distância total: {distTotal.ToString()} km";
 
             // salva o caminho e atualiza o mapa
             caminhoDestacado = caminho.Select(c => c.Item1).ToList();
