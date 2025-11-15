@@ -368,6 +368,7 @@ namespace Proj4
 
                     TerminarInclusao();
                     pbMapa.Invalidate();
+                    pnlArvore.Invalidate();
                 }
                 else
                 {
@@ -389,12 +390,10 @@ namespace Proj4
                     udY.Value = (decimal)arvore.Atual.Info.Y;
 
                     dgvLigacoes.Rows.Clear();
-                    cbxCidadeDestino.Items.Clear();
 
                     foreach (Ligacao ligacao in arvore.Atual.Info.ListarLigacoes())
                     {
                         dgvLigacoes.Rows.Add(ligacao.Destino, ligacao.Distancia);
-                        cbxCidadeDestino.Items.Add(ligacao.Destino);
                     }
                 }
                 else
