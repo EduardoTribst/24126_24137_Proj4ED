@@ -284,14 +284,6 @@ namespace Proj4
 
         private void btnIncluirCidade_Click(object sender, EventArgs e)
         {
-            /*
-                "Na inclusão de cidade, pressiona-se o botão [Incluir] e, a partir daí, o usuário deverá digitar o
-                 nome da cidade que deseja incluir, verificar (evento Leave do textBox) se a cidade não existe. Não
-                 existindo, deve-se clicar no local do mapa onde fica essa cidade para que suas coordenadas X e
-                 Y proporcionais sejam preenchidas nos numericUpDowns udX e udY. Após isso, a cidade deve
-                 ser incluída na árvore de busca balanceada AVL"
-             */
-
             if (!processoInclusaoCidade)
             {
                 IniciarInclusao();
@@ -300,9 +292,6 @@ namespace Proj4
             {
                 TerminarInclusao();
             }
-
-
-
         }
 
         private void IniciarInclusao()
@@ -326,9 +315,9 @@ namespace Proj4
             processoInclusaoCidade = false;
             MessageBox.Show("Processo de inclusão terminado");
 
-            btnBuscarCaminho.Enabled = true;
+            btnBuscarCidade.Enabled = true;
             btnAlterarCidade.Enabled = true;
-            btnExcluirCaminho.Enabled = true;
+            btnExcluirCidade.Enabled = true;
         }
 
         private void pbMapa_MouseClick(object sender, MouseEventArgs e)
@@ -343,24 +332,19 @@ namespace Proj4
                 }
 
                 // pega as coordenadas do click proporcionais
-                double xProp = (double)e.X / pbMapa.Width;
-                double yProp = (double)e.Y / pbMapa.Height;
+                double xProporcional = (double)e.X / pbMapa.Width;
+                double yProporcional = (double)e.Y / pbMapa.Height;
 
-                // debug
-                Console.WriteLine(xProp);
-                Console.WriteLine(yProp);
-
-                udX.Value = (decimal)xProp;
-                udY.Value = (decimal)yProp;
+                udX.Value = (decimal)xProporcional;
+                udY.Value = (decimal)yProporcional;
 
                 if (MessageBox.Show("Confirma a inclusão da cidade " + txtNomeCidade.Text + "?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Cidade novaCidade = new Cidade(txtNomeCidade.Text.Trim(), (double)udX.Value, (double)udY.Value);
+                    // insere na árvore
+                    Cidade novaCidade = new Cidade(txtNomeCidade.Text.Trim(), xProporcional, yProporcional);
                     arvore.InserirBalanceado(novaCidade);
-                    // atualiza a arvore desenhada
 
-                    arvore.Desenhar(pnlArvore);
-
+                    // desenha a arvore
                     TerminarInclusao();
                     pbMapa.Invalidate();
                 }
