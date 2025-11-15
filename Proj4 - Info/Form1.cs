@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,6 +13,7 @@ namespace Proj4
         ArvoreAVL<Cidade> arvore;
         Grafo grafoCaminhos;
         List<string> caminhoDestacado; // usado para pintar o caminho no mapa
+        bool processoInclusaoCidade;
 
         public Form1()
         {
@@ -21,6 +21,7 @@ namespace Proj4
             arvore = new ArvoreAVL<Cidade>();
             grafoCaminhos = new Grafo();
             caminhoDestacado = null;
+            processoInclusaoCidade = false;
         }
 
         private void tpCadastro_Click(object sender, EventArgs e)
@@ -45,7 +46,27 @@ namespace Proj4
 
         private void txtNomeCidade_Leave(object sender, EventArgs e)
         {
+            if (processoInclusaoCidade)
+            {
+                string nomeCidade = txtNomeCidade.Text.Trim();
+                if (nomeCidade == "")
+                {
+                    MessageBox.Show("Nome da cidade não pode ser vazio.");
+                    TerminarInclusao();
+                    return;
+                }
 
+                if (arvore.Existe(new Cidade(nomeCidade, 0, 0)))
+                {
+                    MessageBox.Show("Cidade já existe.");
+                    TerminarInclusao();
+                }
+                else
+                {
+                    MessageBox.Show("Clique no ponto do mapa onde a cidade será incluída.");
+                    pbMapa.Cursor = Cursors.Cross;
+                }
+            }
         }
 
         private void LerArquivos()
@@ -54,7 +75,7 @@ namespace Proj4
             if (dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 string nomeArquivoCidades = dlgAbrir.FileName;
-                
+
                 arvore.LerArquivoDeRegistros(nomeArquivoCidades);
                 arvore.Desenhar(pnlArvore);
             }
@@ -64,7 +85,7 @@ namespace Proj4
                 return;
             }
 
-                dlgAbrir.Title = "Selecione o arquivo texto de ligações";
+            dlgAbrir.Title = "Selecione o arquivo texto de ligações";
             if (dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 string nomeArquivoLigacoes = dlgAbrir.FileName;
@@ -87,7 +108,7 @@ namespace Proj4
                 while (arquivoLeitura.EndOfStream == false)
                 {
                     linha = arquivoLeitura.ReadLine();
-                    
+
                     var valores = linha.Split(';');
                     cidadeOrigem = valores[0];
                     cidadeDestino = valores[1];
@@ -99,7 +120,7 @@ namespace Proj4
                     Console.WriteLine(cidadeDestino);
                     Console.WriteLine(distancia);
 
-                    if(cidadeAtual != cidadeOrigem && arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
+                    if (cidadeAtual != cidadeOrigem && arvore.Existe(new Cidade(cidadeDestino, 0, 0)))
                     {
                         arvore.Existe(new Cidade(cidadeOrigem, 0, 0));
                         cidadeAtual = cidadeOrigem;
@@ -263,7 +284,91 @@ namespace Proj4
 
         private void btnIncluirCidade_Click(object sender, EventArgs e)
         {
+            /*
+                "Na inclusão de cidade, pressiona-se o botão [Incluir] e, a partir daí, o usuário deverá digitar o
+                 nome da cidade que deseja incluir, verificar (evento Leave do textBox) se a cidade não existe. Não
+                 existindo, deve-se clicar no local do mapa onde fica essa cidade para que suas coordenadas X e
+                 Y proporcionais sejam preenchidas nos numericUpDowns udX e udY. Após isso, a cidade deve
+                 ser incluída na árvore de busca balanceada AVL"
+             */
 
+            if (!processoInclusaoCidade)
+            {
+                IniciarInclusao();
+            }
+            else
+            {
+                TerminarInclusao();
+            }
+
+
+
+        }
+
+        private void IniciarInclusao()
+        {
+            processoInclusaoCidade = true;
+            MessageBox.Show("Processo de inclusão iniciado.\n" +
+                "Digite o nome da cidadade no campo e clique no mapa para definir a localização.\n" +
+                "Para cancelar o processo, clique novamente no botão de incluir cidade.");
+
+            udX.Value = 0;
+            udY.Value = 0;
+            txtNomeCidade.Text = "";
+
+            btnBuscarCaminho.Enabled = false;
+            btnAlterarCidade.Enabled = false;
+            btnExcluirCaminho.Enabled = false;
+        }
+
+        private void TerminarInclusao()
+        {
+            processoInclusaoCidade = false;
+            MessageBox.Show("Processo de inclusão terminado");
+
+            btnBuscarCaminho.Enabled = true;
+            btnAlterarCidade.Enabled = true;
+            btnExcluirCaminho.Enabled = true;
+        }
+
+        private void pbMapa_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (processoInclusaoCidade)
+            {
+                // verifica se o usuario ainda nao digitou o nome da cidade e buscou se existe
+                if (txtNomeCidade.Text.Trim() == "")
+                {
+                    MessageBox.Show("Digite o nome da cidade antes de clicar no mapa.");
+                    return;
+                }
+
+                // pega as coordenadas do click proporcionais
+                double xProp = (double)e.X / pbMapa.Width;
+                double yProp = (double)e.Y / pbMapa.Height;
+
+                // debug
+                Console.WriteLine(xProp);
+                Console.WriteLine(yProp);
+
+                udX.Value = (decimal)xProp;
+                udY.Value = (decimal)yProp;
+
+                if (MessageBox.Show("Confirma a inclusão da cidade " + txtNomeCidade.Text + "?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Cidade novaCidade = new Cidade(txtNomeCidade.Text.Trim(), (double)udX.Value, (double)udY.Value);
+                    arvore.InserirBalanceado(novaCidade);
+                    // atualiza a arvore desenhada
+
+                    arvore.Desenhar(pnlArvore);
+
+                    TerminarInclusao();
+                    pbMapa.Invalidate();
+                }
+                else
+                {
+                    TerminarInclusao();
+                }
+            }
         }
     }
 }
