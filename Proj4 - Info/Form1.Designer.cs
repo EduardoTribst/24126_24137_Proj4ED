@@ -405,6 +405,7 @@
             this.btnIncluirCidade.TabIndex = 0;
             this.btnIncluirCidade.Text = "Incluir";
             this.btnIncluirCidade.UseVisualStyleBackColor = true;
+            this.btnIncluirCidade.Click += new System.EventHandler(this.btnIncluirCidade_Click);
             // 
             // pbMapa
             // 
@@ -442,6 +443,10 @@
             this.pnlArvore.Size = new System.Drawing.Size(1641, 828);
             this.pnlArvore.TabIndex = 0;
             this.pnlArvore.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlArvore_Paint);
+            // 
+            // dlgAbrir
+            // 
+            this.dlgAbrir.InitialDirectory = "./dados";
             // 
             // Form1
             // 

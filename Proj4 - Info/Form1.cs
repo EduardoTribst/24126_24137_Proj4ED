@@ -260,5 +260,10 @@ namespace Proj4
             caminhoDestacado = caminho.Select(c => c.Item1).ToList();
             pbMapa.Invalidate();
         }
+
+        private void btnIncluirCidade_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
