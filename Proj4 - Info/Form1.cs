@@ -179,18 +179,31 @@ namespace Proj4
                 MessageBox.Show("Selecione um arquivo");
                 return;
             }
-        }
 
-        private void SalvarArquivoLigacoes(string nomeArquivo)
-        {
-            StreamWriter arquivoEscrita = new StreamWriter(nomeArquivo);
-            List<Cidade> listaCidades = new List<Cidade>();
-            arvore.VisitarEmOrdem(ref listaCidades);
+            void SalvarArquivoLigacoes(string nomeArquivo)
+            {
+                StreamWriter arquivoEscrita = new StreamWriter(nomeArquivo);
+                List<Cidade> listaCidades = new List<Cidade>();
+                arvore.VisitarEmOrdem(ref listaCidades);
 
-            foreach (Cidade cidade in listaCidades)
-                cidade.SalvarLigacoes(arquivoEscrita);
+                foreach (Cidade cidade in listaCidades)
+                {
+                    foreach (Ligacao lig in cidade.ListarLigacoes())
+                    {
+                        string cidade1 = cidade.Nome;
+                        string cidade2 = lig.Destino;
 
-            arquivoEscrita.Close();
+                        // so salva se for a primeira cidade em ordem alfabetica
+                        if (string.Compare(cidade1, cidade2, StringComparison.Ordinal) < 0)
+                        {
+                            arquivoEscrita.WriteLine($"{cidade1};{cidade2};{lig.Distancia}");
+                        }
+                    }
+                }
+
+                arquivoEscrita.Close();
+            }
+
         }
 
         private void pbMapa_Paint(object sender, PaintEventArgs e)
@@ -299,9 +312,9 @@ namespace Proj4
             udY.Value = 0;
             txtNomeCidade.Text = "";
 
-            btnBuscarCaminho.Enabled = false;
+            btnBuscarCidade.Enabled = false;
             btnAlterarCidade.Enabled = false;
-            btnExcluirCaminho.Enabled = false;
+            btnExcluirCidade.Enabled = false;
         }
 
         private void TerminarInclusao()
@@ -393,6 +406,11 @@ namespace Proj4
             {
                 MessageBox.Show("Digite o nome da cidade para buscar.");
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SalvarArquivos();
         }
     }
 }
