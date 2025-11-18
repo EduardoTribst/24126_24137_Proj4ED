@@ -177,6 +177,7 @@
             this.cbxCidadeDestino.Name = "cbxCidadeDestino";
             this.cbxCidadeDestino.Size = new System.Drawing.Size(243, 30);
             this.cbxCidadeDestino.TabIndex = 1;
+            this.cbxCidadeDestino.Click += new System.EventHandler(this.cbxCidadeDestino_Click);
             // 
             // label6
             // 

@@ -1,4 +1,4 @@
-﻿using apGrafoDaSilva;
+using apGrafoDaSilva;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -410,6 +410,17 @@ namespace Proj4
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SalvarArquivos();
+        }
+
+        private void cbxCidadeDestino_Click(object sender, EventArgs e)
+        {
+            List<Cidade> listaCidades = new List<Cidade>();
+            arvore.VisitarEmOrdem(ref listaCidades);
+            cbxCidadeDestino.Items.Clear();
+            foreach (Cidade cidade in listaCidades)
+            {
+                cbxCidadeDestino.Items.Add(cidade.Nome);
+            }
         }
     }
 }
