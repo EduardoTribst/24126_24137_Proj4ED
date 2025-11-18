@@ -324,6 +324,7 @@
             this.btnAlterarCidade.TabIndex = 8;
             this.btnAlterarCidade.Text = "Alterar";
             this.btnAlterarCidade.UseVisualStyleBackColor = true;
+            this.btnAlterarCidade.Click += new System.EventHandler(this.btnAlterarCidade_Click);
             // 
             // btnBuscarCidade
             // 

@@ -162,22 +162,12 @@ namespace Proj4
                 string nomeArquivoCidades = dlgAbrir.FileName;
                 arvore.GravarArquivoDeRegistros(nomeArquivoCidades);
             }
-            else
-            {
-                MessageBox.Show("Selecione um arquivo");
-                return;
-            }
 
             dlgAbrir.Title = "Selecione o arquivo texto de ligações para salvar";
             if (dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 string nomeArquivoLigacoes = dlgAbrir.FileName;
                 SalvarArquivoLigacoes(nomeArquivoLigacoes);
-            }
-            else
-            {
-                MessageBox.Show("Selecione um arquivo");
-                return;
             }
 
             void SalvarArquivoLigacoes(string nomeArquivo)
@@ -421,6 +411,17 @@ namespace Proj4
             {
                 cbxCidadeDestino.Items.Add(cidade.Nome);
             }
+            cbxCidadeDestino.SelectedItem = cbxCidadeDestino.Items[0];
+
+        }
+
+        private void btnAlterarCidade_Click(object sender, EventArgs e)
+        {
+            int cidade1 = grafoCaminhos.ObterIndiceVertice(RemoverAcentos(txtNomeCidade.Text.Trim()));
+            int cidade2 = grafoCaminhos.ObterIndiceVertice(RemoverAcentos(cbxCidadeDestino.Text.Trim()));
+            // teste do metodo caminho do grafo
+            string caminho = grafoCaminhos.Caminho(cidade1, cidade2);
+            lbDistanciaTotal.Text = caminho;
         }
     }
 }

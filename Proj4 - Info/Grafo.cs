@@ -253,7 +253,7 @@ namespace apGrafoDaSilva
         private int ObterMenor()
         {
             int menor = infinity;
-            int indice = 0;
+            int indice = -1;
 
             for (int j = 0; j < numVerts; j++)
             {
@@ -274,6 +274,11 @@ namespace apGrafoDaSilva
                 if (!vertices[col].foiVisitado)
                 {
                     int atualAteCol = adjMatrix[verticeAtual, col];
+
+                    // Ignorar arestas inexistentes e distâncias inválidas para evitar overflow
+                    if (atualAteCol == infinity || doInicioAteAtual == infinity)
+                        continue;
+
                     int inicioAteCol = doInicioAteAtual + atualAteCol;
 
                     if (inicioAteCol < percurso[col].distancia)
@@ -290,14 +295,33 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            vertices[inicio].foiVisitado = true;
+            if (inicio < 0 || inicio >= numVerts || fim < 0 || fim >= numVerts)
+                return "Índices de vértice inválidos.";
 
+            // Inicializar percurso: para inicio distancia = 0; para outros, se houver aresta direta, usar peso; senão infinity
             for (int j = 0; j < numVerts; j++)
-                percurso[j] = new DistOriginal(inicio, adjMatrix[inicio, j]);
+            {
+                if (j == inicio)
+                {
+                    percurso[j] = new DistOriginal(inicio, 0);
+                }
+                else
+                {
+                    if (adjMatrix[inicio, j] != infinity)
+                        percurso[j] = new DistOriginal(inicio, adjMatrix[inicio, j]);
+                    else
+                        percurso[j] = new DistOriginal(-1, infinity);
+                }
+            }
+
+            vertices[inicio].foiVisitado = true;
 
             for (int i = 0; i < numVerts; i++)
             {
                 int menor = ObterMenor();
+                if (menor == -1)
+                    break;
+
                 verticeAtual = menor;
                 doInicioAteAtual = percurso[menor].distancia;
 
@@ -337,25 +361,34 @@ namespace apGrafoDaSilva
             inicio = ObterIndiceVertice(rotuloInicio);
             fim = ObterIndiceVertice(rotuloFim);
 
-            foreach (var v in vertices)
-            {
-                if (v != null) v.foiVisitado = false;
-            }
+            // vlida os indices
+            if (inicio == -1 || fim == -1)
+                return (new List<(string rotulo, int distancia)>(), infinity);
 
+            for (int j = 0; j < numVerts; j++)
+                vertices[j].foiVisitado = false;
             vertices[inicio].foiVisitado = true;
             for (int j = 0; j < numVerts; j++)
             {
-                percurso[j] = new DistOriginal(inicio, adjMatrix[inicio, j]);
+                int tempDist = adjMatrix[inicio, j];
+                percurso[j] = new DistOriginal(inicio, tempDist);
             }
 
             for (int i = 0; i < numVerts; i++)
             {
                 int menor = ObterMenor();
+                if (menor == -1)
+                    break;
+
                 verticeAtual = menor;
                 doInicioAteAtual = percurso[menor].distancia;
                 vertices[menor].foiVisitado = true;
                 AjustarMenorCaminho();
             }
+
+            // caso nao exista caminho
+            if (percurso[fim].distancia == infinity)
+                return (new List<(string rotulo, int distancia)>(), infinity);
 
             List<(string rotulo, int distancia)> caminhos = new List<(string rotulo, int distancia)>();
             int atual = fim;
@@ -365,7 +398,6 @@ namespace apGrafoDaSilva
                 caminhos.Add((vertices[atual].rotulo, percurso[atual].distancia));
                 atual = percurso[atual].verticePai;
             }
-            // talvez tire esse ultimo add
             caminhos.Add((vertices[inicio].rotulo, 0));
 
             caminhos.Reverse();
