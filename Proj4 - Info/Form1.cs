@@ -54,7 +54,6 @@ namespace Proj4
                 else
                 {
                     MessageBox.Show("Clique no ponto do mapa onde a cidade será incluída.");
-                    pbMapa.Cursor = Cursors.Cross;
                 }
             }
         }
@@ -278,7 +277,7 @@ namespace Proj4
 
             lbDistanciaTotal.Text = $"Distância total: {distTotal} km";
 
-            caminhoDestacado = caminho.Select(c => c.Item1).ToList();
+                caminhoDestacado = caminho.Select(c => c.Item1).ToList();
             pbMapa.Invalidate();
         }
 
@@ -333,6 +332,12 @@ namespace Proj4
 
         private void pbMapa_MouseClick(object sender, MouseEventArgs e)
         {
+            double xProporcional = (double)e.X / pbMapa.Width;
+            double yProporcional = (double)e.Y / pbMapa.Height;
+
+            udX.Value = (decimal)xProporcional;
+            udY.Value = (decimal)yProporcional;
+
             if (processoInclusaoCidade)
             {
                 if (txtNomeCidade.Text.Trim() == "")
@@ -344,12 +349,6 @@ namespace Proj4
                 string nomeCidade = RemoverAcentos(txtNomeCidade.Text.Trim());
                 txtNomeCidade.Text = nomeCidade;
 
-                double xProporcional = (double)e.X / pbMapa.Width;
-                double yProporcional = (double)e.Y / pbMapa.Height;
-
-                udX.Value = (decimal)xProporcional;
-                udY.Value = (decimal)yProporcional;
-
                 if (MessageBox.Show($"Confirma a inclusão da cidade {nomeCidade}?",
                     "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -360,10 +359,10 @@ namespace Proj4
                     pbMapa.Invalidate();
                     pnlArvore.Invalidate();
                 }
-                else
-                {
-                    TerminarInclusao();
-                }
+            }
+            else
+            {
+
             }
         }
 
@@ -417,11 +416,22 @@ namespace Proj4
 
         private void btnAlterarCidade_Click(object sender, EventArgs e)
         {
-            int cidade1 = grafoCaminhos.ObterIndiceVertice(RemoverAcentos(txtNomeCidade.Text.Trim()));
-            int cidade2 = grafoCaminhos.ObterIndiceVertice(RemoverAcentos(cbxCidadeDestino.Text.Trim()));
-            // teste do metodo caminho do grafo
-            string caminho = grafoCaminhos.Caminho(cidade1, cidade2);
-            lbDistanciaTotal.Text = caminho;
+            // altera apenas as coordenadas da cidade
+            string nomeCidade = RemoverAcentos(txtNomeCidade.Text.Trim());
+            if (nomeCidade != null)
+            {
+                if (arvore.Existe(new Cidade(nomeCidade, 0, 0)))
+                {
+                    Cidade cidade = arvore.Atual.Info;
+                    cidade.X = (double)udX.Value;
+                    cidade.Y = (double)udY.Value;
+                    pbMapa.Invalidate();
+                }
+                else
+                {
+                    MessageBox.Show("Cidade não encontrada.");
+                }
+            }
         }
     }
 }

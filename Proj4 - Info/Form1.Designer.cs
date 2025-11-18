@@ -418,7 +418,7 @@
             this.pbMapa.Image = global::Proj4.Properties.Resources.SaoPaulo_MesoMicroSemMunicip;
             this.pbMapa.Location = new System.Drawing.Point(433, 7);
             this.pbMapa.Name = "pbMapa";
-            this.pbMapa.Size = new System.Drawing.Size(1208, 820);
+            this.pbMapa.Size = new System.Drawing.Size(1103, 820);
             this.pbMapa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMapa.TabIndex = 0;
             this.pbMapa.TabStop = false;
