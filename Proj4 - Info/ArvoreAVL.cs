@@ -32,7 +32,10 @@ public class ArvoreAVL<Dado>
         if (atual != null)    // se existe um nó
         {
             VisitarEmOrdem(atual.Esq, lista);             // chamada 1
-            lista.Add(atual.Info);  // seu dado é exibido
+            if (!atual.NoMarcadoParaMorrer)
+            {
+                lista.Add(atual.Info);                       // seu dado é exibido
+            }
             VisitarEmOrdem(atual.Dir, lista);             // chamada 2
         }
     }
@@ -51,8 +54,15 @@ public class ArvoreAVL<Dado>
         if (no == null) return;
 
         Rectangle rect = new Rectangle(x - 15, y - 15, 40, 30);
-        g.FillEllipse(Brushes.LightBlue, rect);
-        g.DrawEllipse(Pens.Black, rect);
+        if (no.NoMarcadoParaMorrer)
+        {
+            g.FillEllipse(Brushes.Red, rect);
+        }
+        else
+        {
+            g.FillEllipse(Brushes.LightBlue, rect);
+        }
+            g.DrawEllipse(Pens.Black, rect);
         g.DrawString(no.Info.ToString(), new Font("Arial", 8), Brushes.Black, x - 10, y - 10);
 
         if (no.Esq != null)
@@ -74,7 +84,7 @@ public class ArvoreAVL<Dado>
         atual = raiz;         // posiciona ponteiro de percurso no 1o nó da árvore
         while (atual != null)
         {
-            if (procurado.CompareTo(atual.Info) == 0)
+            if (procurado.CompareTo(atual.Info) == 0 && !atual.NoMarcadoParaMorrer)
                 return true;    // achamos e noAtual aponta o nó do procurado
 
             antecessor = atual; // mudaremos para o nível debaixo deste

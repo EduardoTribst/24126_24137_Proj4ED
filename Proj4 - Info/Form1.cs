@@ -327,7 +327,7 @@ namespace Proj4
                     novoTexto += letra;
             }
 
-            return novoTexto.Normalize(NormalizationForm.FormC);
+            return novoTexto.Normalize(NormalizationForm.FormC).Trim();
         }
 
         private void pbMapa_MouseClick(object sender, MouseEventArgs e)
@@ -456,6 +456,7 @@ namespace Proj4
                         grafoCaminhos.RemoverVertice(cidadeAExcluir.Nome);
 
                         pbMapa.Invalidate();
+                        pnlArvore.Invalidate();
                     }
                     else
                     {
