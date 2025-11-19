@@ -51,6 +51,13 @@ namespace apGrafoDaSilva
             if (bidirecional)
                 adjMatrix[destino, origem] = peso;
         }
+
+        public void RemoverAresta(int origem, int destino, bool bidirecional = false)
+        {
+            adjMatrix[origem, destino] = infinity;
+            if (bidirecional)
+                adjMatrix[destino, origem] = infinity;
+        }
         private void MoverLinhas(int row, int length)
         {
             if (row != numVerts - 1)

@@ -20,3 +20,13 @@ C:\Users\cooki\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4
 C:\Users\cooki\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.csproj.CoreCompileInputs.cache
 C:\Users\cooki\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.exe
 C:\Users\cooki\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.pdb
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.csproj.AssemblyReference.cache
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.Form1.resources
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.Properties.Resources.resources
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.csproj.GenerateResource.cache
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.csproj.CoreCompileInputs.cache
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.exe
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\obj\Debug\Proj4.pdb
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\bin\Debug\Proj4.exe.config
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\bin\Debug\Proj4.exe
+C:\Users\u24126\Documents\GitHub\24126_24137_Proj4ED\Proj4 - Info\bin\Debug\Proj4.pdb
