@@ -1,4 +1,5 @@
 ﻿using Proj4;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -79,6 +80,13 @@ namespace apGrafoDaSilva
             }
 
             numVerts--;
+        }
+
+        public void RemoverVertice(string rotulo)
+        {
+            int indiceRemover = ObterIndiceVertice(rotulo);
+            
+            RemoverVertice(indiceRemover);
         }
 
         public string[,] ObterAdjacencias()

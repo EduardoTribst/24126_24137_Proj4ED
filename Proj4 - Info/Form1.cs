@@ -354,6 +354,7 @@ namespace Proj4
                 {
                     Cidade novaCidade = new Cidade(nomeCidade, xProporcional, yProporcional);
                     arvore.InserirBalanceado(novaCidade);
+                    grafoCaminhos.NovoVertice(nomeCidade);
 
                     TerminarInclusao();
                     pbMapa.Invalidate();
@@ -431,6 +432,44 @@ namespace Proj4
                 {
                     MessageBox.Show("Cidade não encontrada.");
                 }
+            }
+        }
+
+        private void btnExcluirCidade_Click(object sender, EventArgs e)
+        {
+            // verifica se tem caminhos
+            if (arvore.Existe(new Cidade(txtNomeCidade.Text, 0, 0)))
+            {
+                Cidade cidadeAExcluir = arvore.Atual.Info;
+
+                // verifica se existe caminhos -> sim: pode
+                int qntsLigacoes = cidadeAExcluir.ListarLigacoes().Count;
+
+                if (qntsLigacoes == 0)
+                {
+                    if (MessageBox.Show($"Confirma a exclusão da cidade {cidadeAExcluir.Nome.Trim()}?",
+                    "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        // exclui na arvore
+                        arvore.Excluir(cidadeAExcluir);
+                        // excliui no grafo
+                        grafoCaminhos.RemoverVertice(cidadeAExcluir.Nome);
+
+                        pbMapa.Invalidate();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Exclusão cancelada");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"A cidade {cidadeAExcluir.Nome.Trim()} possui {qntsLigacoes} ligações.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cidade não existe.");
             }
         }
     }

@@ -315,6 +315,7 @@
             this.btnExcluirCidade.TabIndex = 9;
             this.btnExcluirCidade.Text = "Excluir";
             this.btnExcluirCidade.UseVisualStyleBackColor = true;
+            this.btnExcluirCidade.Click += new System.EventHandler(this.btnExcluirCidade_Click);
             // 
             // btnAlterarCidade
             // 
@@ -415,6 +416,7 @@
             this.pbMapa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMapa.Cursor = System.Windows.Forms.Cursors.Cross;
             this.pbMapa.Image = global::Proj4.Properties.Resources.SaoPaulo_MesoMicroSemMunicip;
             this.pbMapa.Location = new System.Drawing.Point(433, 7);
             this.pbMapa.Name = "pbMapa";
