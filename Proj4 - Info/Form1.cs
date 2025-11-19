@@ -480,8 +480,8 @@ namespace Proj4
 
             var cidadeOrigem = txtNomeCidade.Text;
             var cidadeDestino = txtNovoDestino.Text;
-            var distancia = (int)numericUpDown1.Value;
-            if (cidadeDestino != "" && numericUpDown1.Value != 0)
+            var distancia = (int)nuDistancia.Value;
+            if (cidadeDestino != "" && nuDistancia.Value != 0)
             {
                 arvore.Existe(new Cidade(RemoverAcentos(cidadeDestino), 0, 0));
                 var cidadeNovoDestino = arvore.Atual;
@@ -508,34 +508,47 @@ namespace Proj4
 
         private void btnExcluirCaminho_Click(object sender, EventArgs e)
         {
-
             var cidadeOrigem = txtNomeCidade.Text;
             var cidadeDestino = txtNovoDestino.Text;
-            var distancia = (int)numericUpDown1.Value;
-            if (cidadeDestino != "" && numericUpDown1.Value != 0)
+
+            if (!string.IsNullOrWhiteSpace(cidadeDestino))
             {
-                arvore.Existe(new Cidade(RemoverAcentos(cidadeDestino), 0, 0));
-                var cidadeNovoDestino = arvore.Atual;
-                if (arvore.Existe(new Cidade(RemoverAcentos(cidadeOrigem), 0, 0)) && cidadeNovoDestino != null)
+                string origemSemAcento = RemoverAcentos(cidadeOrigem);
+                string destinoSemAcento = RemoverAcentos(cidadeDestino);
+
+                // Localiza destino
+                if (!arvore.Existe(new Cidade(destinoSemAcento, 0, 0)))
                 {
-                    arvore.Atual.Info.ExcluirLigacao(cidadeDestino);
-                    cidadeNovoDestino.Info.ExcluirLigacao(cidadeOrigem);
-
-                    grafoCaminhos.RemoverAresta(
-                        grafoCaminhos.ObterIndiceVertice(RemoverAcentos(cidadeOrigem)),
-                        grafoCaminhos.ObterIndiceVertice(RemoverAcentos(cidadeDestino)),
-                        bidirecional: true
-                    );
-
-                    pbMapa.Invalidate();
-
-                }
-                else
-                {
-                    MessageBox.Show("Cidade de origem ou destino não existe.");
+                    MessageBox.Show("Cidade de destino não existe.");
+                    return;
                 }
 
+                var cidadeNovoDestino = arvore.Atual.Info;
+
+                // Localiza origem
+                if (!arvore.Existe(new Cidade(origemSemAcento, 0, 0)))
+                {
+                    MessageBox.Show("Cidade de origem não existe.");
+                    return;
+                }
+
+                var cidadeOrigemNoArvore = arvore.Atual.Info;
+
+                // Exclui ligações nos dois lados
+                cidadeOrigemNoArvore.ExcluirLigacao(destinoSemAcento);
+                cidadeNovoDestino.ExcluirLigacao(origemSemAcento);
+
+                // Remove no grafo
+                grafoCaminhos.RemoverAresta(
+                    grafoCaminhos.ObterIndiceVertice(origemSemAcento),
+                    grafoCaminhos.ObterIndiceVertice(destinoSemAcento),
+                    bidirecional: true
+                );
+
+                // Redesenha
+                pbMapa.Invalidate();
             }
         }
+
     }
 }
