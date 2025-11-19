@@ -46,7 +46,7 @@ public class ArvoreAVL<Dado>
 
         Graphics g = tela.CreateGraphics();
         g.Clear(Color.White);
-        DesenharNo(g, Raiz, tela.Width / 2, 20, tela.Width / 5, 50);
+        DesenharNo(g, Raiz, tela.Width*9 / 20, 20, tela.Width / 5, 50);
     }
 
     private void DesenharNo(Graphics g, NoArvoreAVL<Dado> no, int x, int y, int deslocamentoX, int deslocamentoY)

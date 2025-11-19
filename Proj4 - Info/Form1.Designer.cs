@@ -448,6 +448,7 @@
             this.pnlArvore.Name = "pnlArvore";
             this.pnlArvore.Size = new System.Drawing.Size(1641, 828);
             this.pnlArvore.TabIndex = 0;
+            this.pnlArvore.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlArvore_Paint);
             // 
             // dlgAbrir
             // 

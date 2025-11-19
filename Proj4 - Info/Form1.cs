@@ -361,10 +361,6 @@ namespace Proj4
                     pnlArvore.Invalidate();
                 }
             }
-            else
-            {
-
-            }
         }
 
         private void btnBuscarCidade_Click(object sender, EventArgs e)
@@ -472,6 +468,11 @@ namespace Proj4
             {
                 MessageBox.Show("Cidade não existe.");
             }
+        }
+
+        private void pnlArvore_Paint(object sender, PaintEventArgs e)
+        {
+            arvore.Desenhar(pnlArvore);
         }
     }
 }
