@@ -545,10 +545,26 @@ namespace Proj4
                     bidirecional: true
                 );
 
-                // Redesenha
                 pbMapa.Invalidate();
             }
         }
 
+        private void timerRelogio_Tick(object sender, EventArgs e)
+        {
+            lbRelogio.Text = DateTime.Now.ToString("HH:mm:ss");
+
+            if (DateTime.Now.Day == 25 && DateTime.Now.Month == 12)
+            {
+                lbMensagem.Text = "Feliz Natal!";
+            }
+            else if (DateTime.Now.Day == 1 && DateTime.Now.Month == 1)
+            {
+                lbMensagem.Text = "Feliz Ano Novo!";
+            }
+            else
+            {
+                lbMensagem.Text = "Ainda não é Natal nem Ano Novo";
+            }
+        }
     }
 }

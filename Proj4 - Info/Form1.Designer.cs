@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCadastro = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -63,6 +64,15 @@
             this.tpArvore = new System.Windows.Forms.TabPage();
             this.pnlArvore = new System.Windows.Forms.Panel();
             this.dlgAbrir = new System.Windows.Forms.OpenFileDialog();
+            this.tbInfo = new System.Windows.Forms.TabPage();
+            this.dtpCalendario = new System.Windows.Forms.DateTimePicker();
+            this.lbRelogio = new System.Windows.Forms.Label();
+            this.lbAutores = new System.Windows.Forms.Label();
+            this.timerRelogio = new System.Windows.Forms.Timer(this.components);
+            this.lbMensagem = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpCadastro.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -75,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.udX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMapa)).BeginInit();
             this.tpArvore.SuspendLayout();
+            this.tbInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -84,6 +95,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tpCadastro);
             this.tabControl1.Controls.Add(this.tpArvore);
+            this.tabControl1.Controls.Add(this.tbInfo);
             this.tabControl1.Location = new System.Drawing.Point(2, 4);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
@@ -96,11 +108,11 @@
             this.tpCadastro.Controls.Add(this.groupBox3);
             this.tpCadastro.Controls.Add(this.groupBox1);
             this.tpCadastro.Controls.Add(this.pbMapa);
-            this.tpCadastro.Location = new System.Drawing.Point(4, 31);
+            this.tpCadastro.Location = new System.Drawing.Point(4, 27);
             this.tpCadastro.Margin = new System.Windows.Forms.Padding(4);
             this.tpCadastro.Name = "tpCadastro";
             this.tpCadastro.Padding = new System.Windows.Forms.Padding(4);
-            this.tpCadastro.Size = new System.Drawing.Size(1650, 830);
+            this.tpCadastro.Size = new System.Drawing.Size(1650, 834);
             this.tpCadastro.TabIndex = 0;
             this.tpCadastro.Text = "Cidades e Caminhos";
             this.tpCadastro.UseVisualStyleBackColor = true;
@@ -128,7 +140,7 @@
             this.lbDistanciaTotal.AutoSize = true;
             this.lbDistanciaTotal.Location = new System.Drawing.Point(11, 345);
             this.lbDistanciaTotal.Name = "lbDistanciaTotal";
-            this.lbDistanciaTotal.Size = new System.Drawing.Size(133, 24);
+            this.lbDistanciaTotal.Size = new System.Drawing.Size(109, 18);
             this.lbDistanciaTotal.TabIndex = 4;
             this.lbDistanciaTotal.Text = "Distância total: ";
             // 
@@ -175,7 +187,7 @@
             this.cbxCidadeDestino.FormattingEnabled = true;
             this.cbxCidadeDestino.Location = new System.Drawing.Point(11, 56);
             this.cbxCidadeDestino.Name = "cbxCidadeDestino";
-            this.cbxCidadeDestino.Size = new System.Drawing.Size(243, 30);
+            this.cbxCidadeDestino.Size = new System.Drawing.Size(243, 26);
             this.cbxCidadeDestino.TabIndex = 1;
             this.cbxCidadeDestino.Click += new System.EventHandler(this.cbxCidadeDestino_Click);
             // 
@@ -184,7 +196,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(14, 34);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(165, 24);
+            this.label6.Size = new System.Drawing.Size(129, 18);
             this.label6.TabIndex = 0;
             this.label6.Text = "Cidade de Destino";
             // 
@@ -250,7 +262,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(233, 233);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 24);
+            this.label5.Size = new System.Drawing.Size(69, 18);
             this.label5.TabIndex = 7;
             this.label5.Text = "Distância";
             // 
@@ -259,7 +271,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 232);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 24);
+            this.label4.Size = new System.Drawing.Size(96, 18);
             this.label4.TabIndex = 6;
             this.label4.Text = "Novo destino";
             // 
@@ -272,7 +284,7 @@
             0,
             0});
             this.nuDistancia.Name = "nuDistancia";
-            this.nuDistancia.Size = new System.Drawing.Size(67, 28);
+            this.nuDistancia.Size = new System.Drawing.Size(67, 24);
             this.nuDistancia.TabIndex = 5;
             // 
             // txtNovoDestino
@@ -280,7 +292,7 @@
             this.txtNovoDestino.Location = new System.Drawing.Point(9, 253);
             this.txtNovoDestino.MaxLength = 25;
             this.txtNovoDestino.Name = "txtNovoDestino";
-            this.txtNovoDestino.Size = new System.Drawing.Size(216, 28);
+            this.txtNovoDestino.Size = new System.Drawing.Size(216, 24);
             this.txtNovoDestino.TabIndex = 3;
             // 
             // dgvLigacoes
@@ -349,7 +361,7 @@
             0,
             0});
             this.udY.Name = "udY";
-            this.udY.Size = new System.Drawing.Size(87, 28);
+            this.udY.Size = new System.Drawing.Size(87, 24);
             this.udY.TabIndex = 6;
             // 
             // label3
@@ -358,7 +370,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label3.Location = new System.Drawing.Point(207, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 20);
+            this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Y proporcional:";
             // 
@@ -372,7 +384,7 @@
             0,
             0});
             this.udX.Name = "udX";
-            this.udX.Size = new System.Drawing.Size(78, 28);
+            this.udX.Size = new System.Drawing.Size(78, 24);
             this.udX.TabIndex = 4;
             // 
             // label2
@@ -381,7 +393,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.Location = new System.Drawing.Point(2, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 20);
+            this.label2.Size = new System.Drawing.Size(104, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "X proporcional:";
             // 
@@ -390,7 +402,7 @@
             this.txtNomeCidade.Location = new System.Drawing.Point(167, 20);
             this.txtNomeCidade.MaxLength = 25;
             this.txtNomeCidade.Name = "txtNomeCidade";
-            this.txtNomeCidade.Size = new System.Drawing.Size(216, 28);
+            this.txtNomeCidade.Size = new System.Drawing.Size(216, 24);
             this.txtNomeCidade.TabIndex = 2;
             this.txtNomeCidade.Leave += new System.EventHandler(this.txtNomeCidade_Leave);
             // 
@@ -399,7 +411,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 24);
+            this.label1.Size = new System.Drawing.Size(120, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome da cidade:";
             // 
@@ -432,11 +444,11 @@
             // tpArvore
             // 
             this.tpArvore.Controls.Add(this.pnlArvore);
-            this.tpArvore.Location = new System.Drawing.Point(4, 31);
+            this.tpArvore.Location = new System.Drawing.Point(4, 27);
             this.tpArvore.Margin = new System.Windows.Forms.Padding(4);
             this.tpArvore.Name = "tpArvore";
             this.tpArvore.Padding = new System.Windows.Forms.Padding(4);
-            this.tpArvore.Size = new System.Drawing.Size(1650, 830);
+            this.tpArvore.Size = new System.Drawing.Size(1650, 834);
             this.tpArvore.TabIndex = 1;
             this.tpArvore.Text = "Árvore balanceada";
             this.tpArvore.UseVisualStyleBackColor = true;
@@ -456,9 +468,91 @@
             // 
             this.dlgAbrir.InitialDirectory = "./dados";
             // 
+            // tbInfo
+            // 
+            this.tbInfo.Controls.Add(this.label8);
+            this.tbInfo.Controls.Add(this.label7);
+            this.tbInfo.Controls.Add(this.lbMensagem);
+            this.tbInfo.Controls.Add(this.lbAutores);
+            this.tbInfo.Controls.Add(this.lbRelogio);
+            this.tbInfo.Controls.Add(this.dtpCalendario);
+            this.tbInfo.Location = new System.Drawing.Point(4, 27);
+            this.tbInfo.Name = "tbInfo";
+            this.tbInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbInfo.Size = new System.Drawing.Size(1650, 834);
+            this.tbInfo.TabIndex = 2;
+            this.tbInfo.Text = "Informações";
+            this.tbInfo.UseVisualStyleBackColor = true;
+            // 
+            // dtpCalendario
+            // 
+            this.dtpCalendario.CalendarFont = new System.Drawing.Font("Papyrus", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCalendario.Font = new System.Drawing.Font("Papyrus", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCalendario.Location = new System.Drawing.Point(23, 154);
+            this.dtpCalendario.Name = "dtpCalendario";
+            this.dtpCalendario.Size = new System.Drawing.Size(389, 41);
+            this.dtpCalendario.TabIndex = 0;
+            this.dtpCalendario.Value = new System.DateTime(2025, 11, 19, 22, 44, 18, 0);
+            // 
+            // lbRelogio
+            // 
+            this.lbRelogio.AutoSize = true;
+            this.lbRelogio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbRelogio.Font = new System.Drawing.Font("Papyrus", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRelogio.Location = new System.Drawing.Point(85, 219);
+            this.lbRelogio.Name = "lbRelogio";
+            this.lbRelogio.Size = new System.Drawing.Size(113, 48);
+            this.lbRelogio.TabIndex = 1;
+            this.lbRelogio.Text = "relogio";
+            // 
+            // lbAutores
+            // 
+            this.lbAutores.AutoSize = true;
+            this.lbAutores.Font = new System.Drawing.Font("Comic Sans MS", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAutores.Location = new System.Drawing.Point(36, 305);
+            this.lbAutores.Name = "lbAutores";
+            this.lbAutores.Size = new System.Drawing.Size(850, 49);
+            this.lbAutores.TabIndex = 2;
+            this.lbAutores.Text = "Autores: Eduardo Tribst 24126 | Júlio Stein 24137";
+            // 
+            // timerRelogio
+            // 
+            this.timerRelogio.Enabled = true;
+            this.timerRelogio.Tick += new System.EventHandler(this.timerRelogio_Tick);
+            // 
+            // lbMensagem
+            // 
+            this.lbMensagem.AutoSize = true;
+            this.lbMensagem.Font = new System.Drawing.Font("Papyrus", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMensagem.Location = new System.Drawing.Point(587, 154);
+            this.lbMensagem.Name = "lbMensagem";
+            this.lbMensagem.Size = new System.Drawing.Size(473, 46);
+            this.lbMensagem.TabIndex = 3;
+            this.lbMensagem.Text = "Ainda não é Natal nem Ano Novo";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Papyrus", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(477, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 46);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "<-";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(80, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(764, 55);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Projeto de caminhos entre cidades";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 864);
             this.Controls.Add(this.tabControl1);
@@ -483,6 +577,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.udX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMapa)).EndInit();
             this.tpArvore.ResumeLayout(false);
+            this.tbInfo.ResumeLayout(false);
+            this.tbInfo.PerformLayout();
             this.ResumeLayout(false);
 
     }
@@ -524,6 +620,15 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     private System.Windows.Forms.Panel pnlArvore;
     private System.Windows.Forms.OpenFileDialog dlgAbrir;
+        private System.Windows.Forms.TabPage tbInfo;
+        private System.Windows.Forms.Label lbRelogio;
+        private System.Windows.Forms.DateTimePicker dtpCalendario;
+        private System.Windows.Forms.Label lbAutores;
+        private System.Windows.Forms.Timer timerRelogio;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbMensagem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label8;
     }
 }
 
