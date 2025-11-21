@@ -1,56 +1,55 @@
-Americana                ;Campinas;40
-Americana                ;Limeira;30
-Aracatuba                ;Bauru;195
-Aracatuba                ;Panorama;195
-Aracatuba                ;Votuporanga;125
-Araraquara               ;Catanduva;115
-Araraquara               ;Ribeirao Preto;92
-Araraquara               ;Sao Carlos;45
-Assis                    ;Ourinhos;70
-Assis                    ;Tupa;97
-Assis                    ;Presidente Prudente;126
-Assis                    ;Marilia;75
-Barretos                 ;Colombia;30
-Barretos                 ;Bebedouro;50
-Bauru                    ;Jau;54
-Bauru                    ;Marilia;105
-Bauru                    ;Botucatu;96
-Bebedouro                ;Catanduva;60
-Botucatu                 ;Ourinhos;182
-Botucatu                 ;Ipero;124
-Buri                     ;Sorocaba;168
-Cajati                   ;Juquia;75
-Campinas                 ;Jundiai;40
-Campinas                 ;Itu;51
-Campinas                 ;Mogi Guacu;96
-Campinas                 ;Indaiatuba;30
-Caraguatatuba            ;Sao Jose dos Campos;91
-Caraguatatuba            ;Ubatuba;50
-Catanduva                ;Sao Jose do Rio Preto;60
-Cruzeiro                 ;Pindamonhangaba;76
-Cruzeiro                 ;Pocos de Caldas;250
-Indaiatuba               ;Itu;20
-Ipero                    ;Sorocaba;29
-Ipero                    ;Mairinque;82
-Itanhaem                 ;Juquia;98
-Itanhaem                 ;Santos;62
-Itirapina                ;Jau;89
-Itirapina                ;Sao Carlos;36
-Itirapina                ;Rio Claro;42
-Itu                      ;Mairinque;50
-Jundiai                  ;Sao Paulo;49
-Limeira                  ;Ribeirao Preto;182
-Limeira                  ;Rio Claro;40
-Marilia                  ;Tupa;74
-Marilia                  ;Ourinhos;105
-Mogi Guacu               ;Pocos de Caldas;103
-Panorama                 ;Tupa;260
-Presidente Epitacio      ;Presidente Prudente;92
-Rubineia                 ;Votuporanga;115
-Santos                   ;Sao Paulo;80
-Santos                   ;Suzano;90
-Sao Jose do Rio Preto    ;Votuporanga;84
-Sao Jose dos Campos      ;Sao Sebastiao;111
-Sao Jose dos Campos      ;Taubate;42
-Sao Paulo                ;Suzano;31
-Taubate                  ;Ubatuba;96
+Americana;Campinas;40
+Americana;Limeira;30
+Aracatuba;Bauru;195
+Aracatuba;Panorama;195
+Aracatuba;Votuporanga;125
+Araraquara;Catanduva;115
+Araraquara;Ribeirao Preto;92
+Araraquara;Sao Carlos;45
+Assis;Ourinhos;70
+Assis;Tupa;97
+Assis;Presidente Prudente;126
+Assis;Marilia;75
+Barretos;Colombia;30
+Barretos;Bebedouro;50
+Bauru;Jau;54
+Bauru;Marilia;105
+Bauru;Botucatu;96
+Bebedouro;Catanduva;60
+Botucatu;Ourinhos;182
+Botucatu;Ipero;124
+Buri;Sorocaba;168
+Cajati;Juquia;75
+Campinas;Jundiai;40
+Campinas;Itu;51
+Campinas;Mogi Guacu;96
+Campinas;Indaiatuba;30
+Caraguatatuba;Sao Jose dos Campos;91
+Caraguatatuba;Ubatuba;50
+Catanduva;Sao Jose do Rio Preto;60
+Cruzeiro;Pindamonhangaba;76
+Cruzeiro;Pocos de Caldas;250
+Ipero;Sorocaba;29
+Ipero;Mairinque;82
+Itanhaem;Juquia;98
+Itanhaem;Santos;62
+Itirapina;Jau;89
+Itirapina;Sao Carlos;36
+Itirapina;Rio Claro;42
+Itu;Mairinque;50
+Jundiai;Sao Paulo;49
+Limeira;Ribeirao Preto;182
+Limeira;Rio Claro;40
+Marilia;Tupa;74
+Marilia;Ourinhos;105
+Mogi Guacu;Pocos de Caldas;103
+Panorama;Tupa;260
+Presidente Epitacio;Presidente Prudente;92
+Rubineia;Votuporanga;115
+Santos;Sao Paulo;80
+Santos;Suzano;90
+Sao Jose do Rio Preto;Votuporanga;84
+Sao Jose dos Campos;Sao Sebastiao;111
+Sao Jose dos Campos;Taubate;42
+Sao Paulo;Suzano;31
+Taubate;Ubatuba;96

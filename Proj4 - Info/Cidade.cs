@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -87,11 +87,14 @@ namespace Proj4
         {
             if (arquivo != null)
             {
-                char[] umNome = new char[tamanhoNome];
-                for (int i = 0; i < tamanhoNome; i++)
-                    umNome[i] = Nome[i];
+                char[] nome = Nome.ToCharArray();
+                arquivo.Write(nome);
                 arquivo.Write(X);
-                arquivo.Write(Y);
+                arquivo.Write(y);
+            }
+            else
+            {
+                throw new Exception("Arquivo não aberto");
             }
         }
 
@@ -130,7 +133,7 @@ namespace Proj4
                 ligacoes.InserirAposFim(novaLigacao);
                 return true;
             }
-        } 
+        }
         public bool ExcluirLigacao(string destino)
         {
             Ligacao ligacaoParaExcluir = new Ligacao(this.Nome, destino, 0);
@@ -139,4 +142,3 @@ namespace Proj4
         }
     }
 }
-

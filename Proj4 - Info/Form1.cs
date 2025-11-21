@@ -98,6 +98,10 @@ namespace Proj4
             while (!arquivoLeitura.EndOfStream)
             {
                 linha = arquivoLeitura.ReadLine();
+
+                if (linha == "")
+                    continue;
+
                 var valores = linha.Split(';');
 
                 string cidadeOrigem = RemoverAcentos(valores[0]);
@@ -179,8 +183,8 @@ namespace Proj4
                 {
                     foreach (Ligacao lig in cidade.ListarLigacoes())
                     {
-                        string cidade1 = cidade.Nome;
-                        string cidade2 = lig.Destino;
+                        string cidade1 = cidade.Nome.Trim();
+                        string cidade2 = lig.Destino.Trim();
 
                         // so salva se for a primeira cidade em ordem alfabetica
                         if (string.Compare(cidade1, cidade2, StringComparison.Ordinal) < 0)
@@ -496,6 +500,8 @@ namespace Proj4
                         distancia,
                         bidirecional: true);
 
+                    MessageBox.Show("Caminho adicionado com sucesso");
+
                     pbMapa.Invalidate();
 
                 }
@@ -544,6 +550,8 @@ namespace Proj4
                     grafoCaminhos.ObterIndiceVertice(destinoSemAcento),
                     bidirecional: true
                 );
+
+                MessageBox.Show("Caminho removido com sucesso");
 
                 pbMapa.Invalidate();
             }
