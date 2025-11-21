@@ -544,6 +544,7 @@ namespace Proj4
                     grafoCaminhos.ObterIndiceVertice(destinoSemAcento),
                     bidirecional: true
                 );
+                MessageBox.Show("Caminho excluido.");
 
                 pbMapa.Invalidate();
             }
