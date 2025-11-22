@@ -489,7 +489,7 @@ namespace Proj4
             {
                 arvore.Existe(new Cidade(RemoverAcentos(cidadeDestino), 0, 0));
                 var cidadeNovoDestino = arvore.Atual;
-                if (arvore.Existe(new Cidade(RemoverAcentos(cidadeOrigem), 0, 0)) && cidadeNovoDestino != null)
+                if (arvore.Existe(new Cidade(RemoverAcentos(cidadeOrigem), 0, 0)) && cidadeNovoDestino != null && cidadeOrigem != cidadeDestino)
                 {
                     arvore.Atual.Info.CriarLigacao(cidadeDestino, distancia);
                     cidadeNovoDestino.Info.CriarLigacao(cidadeOrigem, distancia);
