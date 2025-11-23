@@ -1,8 +1,11 @@
-﻿using System.IO;
+// Eduardo 24126
+// Júlio 24137
+
+using System.IO;
 
 public interface IRegistro
 {
-  void LerRegistro(BinaryReader arquivo, long qualRegistro);
-  void GravarRegistro(BinaryWriter arquivo);
-  int TamanhoRegistro { get; }
+    void LerRegistro(BinaryReader arquivo, long qualRegistro);
+    void GravarRegistro(BinaryWriter arquivo);
+    int TamanhoRegistro { get; }
 }

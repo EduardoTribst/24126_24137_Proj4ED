@@ -1,3 +1,6 @@
+// Eduardo 24126
+// Júlio 24137
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,24 +90,24 @@ namespace Proj4
             }
         }
 
-      public Dado InfoInicio()
+        public Dado InfoInicio()
         {
             if (EstaVazia)
                 throw new Exception("Lista vazia! Não é possível acessar o início.");
             return primeiro.Info;
         }
-    
-    public Dado RemoverOPrimeiro()
-    {
-      if (EstaVazia)
-        throw new Exception("Não é possível remover o primeiro.");
-      Dado dado = primeiro.Info;
-      primeiro = primeiro.Prox;
-      if (primeiro == null)
-        ultimo = null; // lista ficou vazia
-      quantosNos--;
-      return dado;
-    }
+
+        public Dado RemoverOPrimeiro()
+        {
+            if (EstaVazia)
+                throw new Exception("Não é possível remover o primeiro.");
+            Dado dado = primeiro.Info;
+            primeiro = primeiro.Prox;
+            if (primeiro == null)
+                ultimo = null; // lista ficou vazia
+            quantosNos--;
+            return dado;
+        }
         public void InserirAntesDoInicio(Dado novoDado)
         {
             var novoNo = new NoLista<Dado>(novoDado, primeiro);
@@ -161,11 +164,11 @@ namespace Proj4
                 atual = null;
                 return false;
             }
-            
-// caso não tenha sido definido que a chave está fora dos limites de
-// chaves da lista, vamos procurar no seu interior
-// o apontador atual indica o primeiro nó da lista e consideraremos que
-// ainda não achou a chave procurada nem chegamos ao final da lista
+
+            // caso não tenha sido definido que a chave está fora dos limites de
+            // chaves da lista, vamos procurar no seu interior
+            // o apontador atual indica o primeiro nó da lista e consideraremos que
+            // ainda não achou a chave procurada nem chegamos ao final da lista
             bool achou = false;
             bool fim = false;
             // repete os comandos abaixo enquanto não achou o RA nem chegou ao
@@ -225,7 +228,7 @@ namespace Proj4
 
         public bool RemoverDado(Dado aExcluir)
         {
-            if (ExisteDado(aExcluir)) // existeDado configurou 
+            if (ExisteDado(aExcluir)) // existeDado configurou
             {                         // atual e anterior
                 quantosNos--;
 
@@ -237,15 +240,15 @@ namespace Proj4
                 }
                 else
                     if (atual == ultimo)    // se vamos excluir o último nó
-                    {
-                        ultimo = anterior;
-                        ultimo.Prox = null;
-                    }
-                    else
-                    {
-                        anterior.Prox = atual.Prox;
-                        atual.Prox = null;
-                    }
+                {
+                    ultimo = anterior;
+                    ultimo.Prox = null;
+                }
+                else
+                {
+                    anterior.Prox = atual.Prox;
+                    atual.Prox = null;
+                }
                 return true;
             }
             return false;
@@ -254,14 +257,14 @@ namespace Proj4
         {
             var novo = new NoLista<Dado>(dados, null); // guarda dados no
                                                        // novo nó
-            // existeChave() encontrou intervalo de inclusão do novo nó
+                                                       // existeChave() encontrou intervalo de inclusão do novo nó
             anterior.Prox = novo; // liga anterior ao novo
             novo.Prox = atual; // e novo no atual
             if (anterior == ultimo) // se incluiu ao final da lista,
                 ultimo = novo; // atualiza o apontador ultimo
             quantosNos++; // incrementa número de nós da lista
         }
-      
+
         public void Ordenar()
         {
             ListaSimples<Dado> ordenada = new ListaSimples<Dado>();

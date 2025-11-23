@@ -1,13 +1,16 @@
-﻿using System;
+// Eduardo 24126
+// Júlio 24137
+
+using System;
 using System.Collections.Generic;
 
 public interface IQueue<Tipo>
 {
-  void Enfileirar(Tipo novoDado);
-  Tipo Retirar();
-  Tipo OInicio();
-  Tipo OFim();
-  bool EstaVazia { get; }
-  int Tamanho    { get; }
-  List<Tipo> Listar();
+    void Enfileirar(Tipo novoDado);
+    Tipo Retirar();
+    Tipo OInicio();
+    Tipo OFim();
+    bool EstaVazia { get; }
+    int Tamanho { get; }
+    List<Tipo> Listar();
 }

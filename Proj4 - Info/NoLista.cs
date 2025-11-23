@@ -1,3 +1,6 @@
+// Eduardo 24126
+// Júlio 24137
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Proj4
 {
-    public class NoLista<Dado> 
-        where Dado :   IComparable<Dado>
+    public class NoLista<Dado>
+        where Dado : IComparable<Dado>
     {
         private Dado info;
         private NoLista<Dado> prox;

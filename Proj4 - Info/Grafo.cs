@@ -1,3 +1,6 @@
+// Eduardo 24126
+// Júlio 24137
+
 using Proj4;
 using System;
 using System.Collections.Generic;
@@ -175,12 +178,11 @@ namespace apGrafoDaSilva
                 RemoverVertice(curr);
             }
 
-            StringBuilder sb = new StringBuilder("Ordenação Topológica: ");
-
+            List<string> resultado = new List<string>();
             while (pilha.Count > 0)
-                sb.Append(pilha.Pop() + " ");
+                resultado.Add(pilha.Pop());
 
-            return sb.ToString();
+            return "Ordenação Topológica: " + string.Join(" ", resultado);
         }
 
         private int ObterAdjNaoVisitado(int v)
@@ -197,11 +199,11 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            StringBuilder sb = new StringBuilder();
+            List<string> resultado = new List<string>();
             Stack<int> pilha = new Stack<int>();
 
             vertices[0].foiVisitado = true;
-            sb.Append(vertices[0].rotulo + " ");
+            resultado.Add(vertices[0].rotulo);
             pilha.Push(0);
 
             while (pilha.Count > 0)
@@ -213,7 +215,7 @@ namespace apGrafoDaSilva
                 else
                 {
                     vertices[v].foiVisitado = true;
-                    sb.Append(vertices[v].rotulo + " ");
+                    resultado.Add(vertices[v].rotulo);
                     pilha.Push(v);
                 }
             }
@@ -221,7 +223,7 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            return sb.ToString();
+            return string.Join(" ", resultado);
         }
 
         public string PercursoPorLargura()
@@ -229,11 +231,11 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            StringBuilder sb = new StringBuilder();
+            List<string> resultado = new List<string>();
             Queue<int> fila = new Queue<int>();
 
             vertices[0].foiVisitado = true;
-            sb.Append(vertices[0].rotulo + " ");
+            resultado.Add(vertices[0].rotulo);
             fila.Enqueue(0);
 
             while (fila.Count > 0)
@@ -244,7 +246,7 @@ namespace apGrafoDaSilva
                 while (v2 != -1)
                 {
                     vertices[v2].foiVisitado = true;
-                    sb.Append(vertices[v2].rotulo + " ");
+                    resultado.Add(vertices[v2].rotulo);
                     fila.Enqueue(v2);
                     v2 = ObterAdjNaoVisitado(v1);
                 }
@@ -253,7 +255,7 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            return sb.ToString();
+            return string.Join(" ", resultado);
         }
 
         public List<string> ArvoreGeradoraMinima(int primeiro)

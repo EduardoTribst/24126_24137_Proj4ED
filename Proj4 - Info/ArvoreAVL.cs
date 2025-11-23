@@ -1,4 +1,7 @@
-﻿using System;
+// Eduardo 24126
+// Júlio 24137
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -46,7 +49,7 @@ public class ArvoreAVL<Dado>
 
         Graphics g = tela.CreateGraphics();
         g.Clear(Color.White);
-        DesenharNo(g, Raiz, tela.Width*9 / 20, 20, tela.Width / 5, 50);
+        DesenharNo(g, Raiz, tela.Width * 9 / 20, 20, tela.Width / 5, 50);
     }
 
     private void DesenharNo(Graphics g, NoArvoreAVL<Dado> no, int x, int y, int deslocamentoX, int deslocamentoY)
@@ -62,7 +65,7 @@ public class ArvoreAVL<Dado>
         {
             g.FillEllipse(Brushes.LightBlue, rect);
         }
-            g.DrawEllipse(Pens.Black, rect);
+        g.DrawEllipse(Pens.Black, rect);
         g.DrawString(no.Info.ToString(), new Font("Arial", 8), Brushes.Black, x - 10, y - 10);
 
         if (no.Esq != null)
@@ -137,7 +140,7 @@ public class ArvoreAVL<Dado>
                 return true;
             }
 
-            // atual não é a raiz 
+            // atual não é a raiz
             // se o nó a excluir é uma folha:
             if (atual.Esq == null && atual.Dir == null)   // é folha
             {
@@ -217,13 +220,13 @@ public class ArvoreAVL<Dado>
             {
                 long meio = (inicio + fim) / 2;
                 dado = new Dado(); // cria um objeto para armazenar os dados
-                dado.LerRegistro(arquivo, meio); // 
+                dado.LerRegistro(arquivo, meio); //
                 noAtual = new NoArvoreAVL<Dado>(dado);
                 var novoEsq = noAtual.Esq;
-                Particionar(inicio, meio - 1, ref novoEsq); // Particiona à esquerda 
+                Particionar(inicio, meio - 1, ref novoEsq); // Particiona à esquerda
                 noAtual.Esq = novoEsq;
                 var novoDir = noAtual.Dir;
-                Particionar(meio + 1, fim, ref novoDir); // Particiona à direita 
+                Particionar(meio + 1, fim, ref novoDir); // Particiona à direita
                 noAtual.Dir = novoDir;
             }
         }
@@ -320,4 +323,3 @@ public class ArvoreAVL<Dado>
     }
 
 }
-
