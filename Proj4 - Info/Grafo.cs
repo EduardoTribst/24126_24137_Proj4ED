@@ -305,7 +305,7 @@ namespace apGrafoDaSilva
             return indice;
         }
 
-        private void AjustarMenorCaminho()
+        private void AjustarMenorCaminho() // magia negra
         {
             for (int col = 0; col < numVerts; col++)
             {
@@ -336,7 +336,6 @@ namespace apGrafoDaSilva
             if (inicio < 0 || inicio >= numVerts || fim < 0 || fim >= numVerts)
                 return "Índices de vértice inválidos.";
 
-            // Inicializar percurso: para inicio distancia = 0; para outros, se houver aresta direta, usar peso; senão infinity
             for (int j = 0; j < numVerts; j++)
             {
                 if (j == inicio)
@@ -393,7 +392,6 @@ namespace apGrafoDaSilva
         public (List<(string rotulo, int distancia)>, int distanciaTotal)
             CaminhosComDistancias(string rotuloInicio, string rotuloFim)
         {
-
             int inicio, fim;
 
             inicio = ObterIndiceVertice(rotuloInicio);
@@ -408,8 +406,8 @@ namespace apGrafoDaSilva
             vertices[inicio].foiVisitado = true;
             for (int j = 0; j < numVerts; j++)
             {
-                int tempDist = adjMatrix[inicio, j];
-                percurso[j] = new DistOriginal(inicio, tempDist);
+                int distTemp = adjMatrix[inicio, j];
+                percurso[j] = new DistOriginal(inicio, distTemp);
             }
 
             for (int i = 0; i < numVerts; i++)
