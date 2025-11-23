@@ -187,13 +187,13 @@ namespace apGrafoDaSilva
         private int ObterAdjNaoVisitado(int v)
         {
             for (int j = 0; j < numVerts; j++)
-                if (adjMatrix[v, j] == 1 && !vertices[j].foiVisitado)
+                if (adjMatrix[v, j] != infinity && !vertices[j].foiVisitado)
                     return j;
 
             return -1;
         }
 
-        public string PercursoEmProfundidade()
+        public List<string> PercursoEmProfundidade()
         {
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
@@ -222,10 +222,10 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            return string.Join(" ", resultado);
+            return resultado;
         }
 
-        public string PercursoPorLargura()
+        public List<string> PercursoPorLargura()
         {
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
@@ -254,7 +254,7 @@ namespace apGrafoDaSilva
             foreach (var v in vertices)
                 if (v != null) v.foiVisitado = false;
 
-            return string.Join(" ", resultado);
+            return resultado;
         }
 
         public List<string> ArvoreGeradoraMinima(int primeiro)
