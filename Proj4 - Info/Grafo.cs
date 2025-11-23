@@ -1,4 +1,4 @@
-﻿using Proj4;
+using Proj4;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +7,7 @@ namespace apGrafoDaSilva
 {
     class Grafo
     {
-        private const int NUM_VERTICES = 200;
+        private int NUM_VERTICES = 100;
         private Vertice[] vertices;
         private int[,] adjMatrix;
         private int numVerts;
@@ -34,8 +34,30 @@ namespace apGrafoDaSilva
         public void NovoVertice(string rotulo)
         {
             vertices[numVerts] = new Vertice(rotulo);
-            numVerts++;
+            if (numVerts < NUM_VERTICES)
+                numVerts++;
+            else
+                AumentarTamanho();
         }
+
+        private void AumentarTamanho()
+        {
+            int novoTamanho = NUM_VERTICES * 2;
+            Vertice[] novosVertices = new Vertice[novoTamanho];
+            int[,] novaMatrizAdj = new int[novoTamanho, novoTamanho];
+
+            for (int i = 0; i < NUM_VERTICES; i++)
+            {
+                novosVertices[i] = vertices[i];
+                for (int j = 0; j < NUM_VERTICES; j++)
+                    novaMatrizAdj[i, j] = adjMatrix[i, j];
+            }
+
+            vertices = novosVertices;
+            adjMatrix = novaMatrizAdj;
+            NUM_VERTICES = novoTamanho;
+        }
+
         public void NovaAresta(int origem, int destino, bool bidirecional = false)
         {
             adjMatrix[origem, destino] = 1;
@@ -93,7 +115,7 @@ namespace apGrafoDaSilva
         {
             int indiceRemover = ObterIndiceVertice(rotulo);
             Console.WriteLine(indiceRemover);
-            
+
             RemoverVertice(indiceRemover);
         }
 
