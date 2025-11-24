@@ -314,7 +314,6 @@ namespace apGrafoDaSilva
                 {
                     int atualAteCol = adjMatrix[verticeAtual, col];
 
-                    // Ignorar arestas inexistentes e distâncias inválidas para evitar overflow
                     if (atualAteCol == infinity || doInicioAteAtual == infinity)
                         continue;
 
