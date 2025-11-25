@@ -289,12 +289,19 @@ namespace Proj4
 
             List<(String, int)> resultadoCaminho = grafoCaminhos.CaminhosComDistancias(origem, destino);
 
+            dgvRotas.Rows.Clear();
+
+            if (resultadoCaminho == null)
+            {
+                MessageBox.Show("Não foi possível encontrar um caminho entre as cidades.");
+                lbDistanciaTotal.Text = "Distância total: 0 km";
+                return;
+            }
+
             int qntsPontosNoCaminho = resultadoCaminho.Count;
 
             int distTotal = resultadoCaminho[qntsPontosNoCaminho - 1].Item2;
             List<(String, int)> caminho = resultadoCaminho;
-
-            dgvRotas.Rows.Clear();
 
             foreach (var item in caminho)
                 dgvRotas.Rows.Add(item.Item1, $"{item.Item2} km");
