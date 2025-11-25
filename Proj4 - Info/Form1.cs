@@ -275,6 +275,7 @@ namespace Proj4
 
             PointF Converter(double x, double y, double largAtual, double altAtual)
             {
+                // criar um ponto e converter coordenadas -> mapa
                 float novoX = (float)(x * largAtual);
                 float novoY = (float)(y * altAtual);
                 return new PointF(novoX, novoY);
