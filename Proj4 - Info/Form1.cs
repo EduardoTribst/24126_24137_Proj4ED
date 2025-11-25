@@ -18,6 +18,7 @@ namespace Proj4
         ArvoreAVL<Cidade> arvore;
         Grafo grafoCaminhos;
         List<string> caminhoDestacado;
+        string cidadeSelecionada;
         bool processoInclusaoCidade;
 
         public Form1()
@@ -213,7 +214,7 @@ namespace Proj4
 
             Pen corCaminhos = new Pen(Color.DarkGray, 2);
             Brush corCidade = new SolidBrush(Color.Red);
-            Font fonte = new Font("Arial", 10, FontStyle.Bold);
+            Font fonte = new Font("Papyrus", 10, FontStyle.Bold);
 
             foreach (Cidade cidade in listaCidades)
             {
@@ -221,6 +222,7 @@ namespace Proj4
 
                 foreach (Ligacao ligacao in cidade.ListarLigacoes())
                 {
+                    // encontra a cidade destino para usar as coordenadas
                     arvore.Existe(new Cidade(ligacao.Destino, 0, 0));
                     if (arvore.Atual == null)
                         continue;
@@ -233,6 +235,7 @@ namespace Proj4
                 g.DrawString(cidade.Nome, fonte, Brushes.Black, origem.X + 6, origem.Y - 6);
             }
 
+            // destaca o caminho buscado
             if (caminhoDestacado != null && caminhoDestacado.Count > 1)
             {
                 Pen corDestaque = new Pen(Color.Blue, 4);
@@ -258,6 +261,18 @@ namespace Proj4
                 }
             }
 
+            // destaca cidade selecionada
+            if (cidadeSelecionada != null)
+            {
+                Brush corDestaque = new SolidBrush(Color.DarkViolet);
+
+                if (arvore.Existe(new Cidade(cidadeSelecionada, 0, 0)))
+                {
+                    PointF centro = Converter(arvore.Atual.Info.X, arvore.Atual.Info.Y, larguraAtual, alturaAtual);
+                    g.FillEllipse(corDestaque, centro.X - 5, centro.Y - 5, 10, 10);
+                }
+            }
+
             PointF Converter(double x, double y, double largAtual, double altAtual)
             {
                 float novoX = (float)(x * largAtual);
@@ -271,11 +286,12 @@ namespace Proj4
             string origem = RemoverAcentos(txtNomeCidade.Text.Trim());
             string destino = RemoverAcentos(cbxCidadeDestino.Text.Trim());
 
-            (List<(String, int)>, int) resultadoCaminho =
-                grafoCaminhos.CaminhosComDistancias(origem, destino);
+            List<(String, int)> resultadoCaminho = grafoCaminhos.CaminhosComDistancias(origem, destino);
 
-            int distTotal = resultadoCaminho.Item2;
-            List<(String, int)> caminho = resultadoCaminho.Item1;
+            int qntsPontosNoCaminho = resultadoCaminho.Count;
+
+            int distTotal = resultadoCaminho[qntsPontosNoCaminho - 1].Item2;
+            List<(String, int)> caminho = resultadoCaminho;
 
             dgvRotas.Rows.Clear();
 
@@ -372,12 +388,12 @@ namespace Proj4
 
         private void btnBuscarCidade_Click(object sender, EventArgs e)
         {
-            string nomeCidade = RemoverAcentos(txtNomeCidade.Text.Trim());
-            txtNomeCidade.Text = nomeCidade;
+            cidadeSelecionada = RemoverAcentos(txtNomeCidade.Text.Trim());
+            txtNomeCidade.Text = cidadeSelecionada;
 
-            if (nomeCidade != "")
+            if (cidadeSelecionada != "")
             {
-                if (arvore.Existe(new Cidade(nomeCidade, 0, 0)))
+                if (arvore.Existe(new Cidade(cidadeSelecionada, 0, 0)))
                 {
                     udX.Value = (decimal)arvore.Atual.Info.X;
                     udY.Value = (decimal)arvore.Atual.Info.Y;
@@ -398,6 +414,7 @@ namespace Proj4
             {
                 MessageBox.Show("Digite o nome da cidade para buscar.");
             }
+            pbMapa.Invalidate();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

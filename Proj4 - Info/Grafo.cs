@@ -389,17 +389,16 @@ namespace apGrafoDaSilva
             return string.Join(" --> ", caminho);
         }
 
-        public (List<(string rotulo, int distancia)>, int distanciaTotal)
-            CaminhosComDistancias(string rotuloInicio, string rotuloFim)
+        public List<(string rotulo, int distancia)> CaminhosComDistancias(string rotuloInicio, string rotuloFim)
         {
             int inicio, fim;
 
             inicio = ObterIndiceVertice(rotuloInicio);
             fim = ObterIndiceVertice(rotuloFim);
 
-            // vlida os indices
+            // valida os indices
             if (inicio == -1 || fim == -1)
-                return (new List<(string rotulo, int distancia)>(), infinity);
+                return null;
 
             for (int j = 0; j < numVerts; j++)
                 vertices[j].foiVisitado = false;
@@ -424,7 +423,7 @@ namespace apGrafoDaSilva
 
             // caso nao exista caminho
             if (percurso[fim].distancia == infinity)
-                return (new List<(string rotulo, int distancia)>(), infinity);
+                return null;
 
             List<(string rotulo, int distancia)> caminhos = new List<(string rotulo, int distancia)>();
             int atual = fim;
@@ -438,7 +437,7 @@ namespace apGrafoDaSilva
 
             caminhos.Reverse();
 
-            return (caminhos, percurso[fim].distancia);
+            return caminhos;
         }
 
         public int ObterIndiceVertice(string rotulo)
