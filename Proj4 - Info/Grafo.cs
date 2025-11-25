@@ -140,50 +140,6 @@ namespace apGrafoDaSilva
             return tabela;
         }
 
-        private int SemSucessores()
-        {
-            bool temAresta;
-
-            for (int linha = 0; linha < numVerts; linha++)
-            {
-                temAresta = false;
-
-                for (int col = 0; col < numVerts; col++)
-                    if (adjMatrix[linha, col] != infinity && adjMatrix[linha, col] > 0)
-                    {
-                        temAresta = true;
-                        break;
-                    }
-
-                if (!temAresta)
-                    return linha;
-            }
-
-            return -1;
-        }
-
-        public string OrdenacaoTopologica()
-        {
-            Stack<string> pilha = new Stack<string>();
-            int total = numVerts;
-
-            while (numVerts > 0)
-            {
-                int curr = SemSucessores();
-                if (curr == -1)
-                    return "Erro: Grafo possui ciclos.";
-
-                pilha.Push(vertices[curr].rotulo);
-                RemoverVertice(curr);
-            }
-
-            List<string> resultado = new List<string>();
-            while (pilha.Count > 0)
-                resultado.Add(pilha.Pop());
-
-            return "Ordenação Topológica: " + string.Join(" ", resultado);
-        }
-
         private int ObterAdjNaoVisitado(int v)
         {
             for (int j = 0; j < numVerts; j++)
@@ -326,67 +282,6 @@ namespace apGrafoDaSilva
                     }
                 }
             }
-        }
-
-        public string Caminho(int inicio, int fim)
-        {
-            foreach (var v in vertices)
-                if (v != null) v.foiVisitado = false;
-
-            if (inicio < 0 || inicio >= numVerts || fim < 0 || fim >= numVerts)
-                return "Índices de vértice inválidos.";
-
-            for (int j = 0; j < numVerts; j++)
-            {
-                if (j == inicio)
-                {
-                    percurso[j] = new DistOriginal(inicio, 0);
-                }
-                else
-                {
-                    if (adjMatrix[inicio, j] != infinity)
-                        percurso[j] = new DistOriginal(inicio, adjMatrix[inicio, j]);
-                    else
-                        percurso[j] = new DistOriginal(-1, infinity);
-                }
-            }
-
-            vertices[inicio].foiVisitado = true;
-
-            for (int i = 0; i < numVerts; i++)
-            {
-                int menor = ObterMenor();
-                if (menor == -1)
-                    break;
-
-                verticeAtual = menor;
-                doInicioAteAtual = percurso[menor].distancia;
-
-                vertices[menor].foiVisitado = true;
-
-                AjustarMenorCaminho();
-            }
-
-            return MontarCaminho(inicio, fim);
-        }
-
-        private string MontarCaminho(int inicio, int fim)
-        {
-            if (percurso[fim].distancia == infinity)
-                return "Não existe caminho.";
-
-            Stack<string> caminho = new Stack<string>();
-            int atual = fim;
-
-            while (atual != inicio)
-            {
-                caminho.Push(vertices[atual].rotulo);
-                atual = percurso[atual].verticePai;
-            }
-
-            caminho.Push(vertices[inicio].rotulo);
-
-            return string.Join(" --> ", caminho);
         }
 
         public List<(string rotulo, int distancia)> CaminhosComDistancias(string rotuloInicio, string rotuloFim)
