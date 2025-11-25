@@ -583,7 +583,7 @@ namespace Proj4
 
             if (DateTime.Now.Day == 25 && DateTime.Now.Month == 12)
             {
-                lbMensagem.Text = "Feliz Natal!";
+                lbMensagem.Text = "Feliz Natal! ho ho ho!";
             }
             else if (DateTime.Now.Day == 1 && DateTime.Now.Month == 1)
             {

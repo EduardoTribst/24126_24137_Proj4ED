@@ -116,8 +116,6 @@ namespace apGrafoDaSilva
         public void RemoverVertice(string rotulo)
         {
             int indiceRemover = ObterIndiceVertice(rotulo);
-            Console.WriteLine(indiceRemover);
-
             RemoverVertice(indiceRemover);
         }
 
