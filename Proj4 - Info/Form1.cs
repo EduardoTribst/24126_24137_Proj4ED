@@ -297,7 +297,7 @@ namespace Proj4
             dgvRotas.Rows.Clear();
 
             foreach (var item in caminho)
-                dgvRotas.Rows.Add(item.Item1, item.Item2);
+                dgvRotas.Rows.Add(item.Item1, $"{item.Item2} km");
 
             lbDistanciaTotal.Text = $"Distância total: {distTotal} km";
 
