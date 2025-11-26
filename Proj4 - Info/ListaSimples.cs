@@ -144,6 +144,8 @@ namespace Proj4
 
         public bool ExisteDado(Dado outroProcurado)
         {
+
+            // O metodo existe foi alterado de forma que ele percorra toda a lista ligada, independendo assim de sua ordenação
             anterior = null;
             atual = primeiro;
             // Em seguida, é verificado se a lista está vazia. Caso esteja, é
@@ -154,16 +156,7 @@ namespace Proj4
             // a lista não está vazia, possui nós
             // dado procurado é menor que o primeiro dado da lista:
             // portanto, dado procurado não existe
-            if (outroProcurado.CompareTo(primeiro.Info) < 0)
-                return false;
-            // dado procurado é maior que o último dado da lista:
-            // portanto, dado procurado não existe
-            if (outroProcurado.CompareTo(ultimo.Info) > 0)
-            {
-                anterior = ultimo;
-                atual = null;
-                return false;
-            }
+            
 
             // caso não tenha sido definido que a chave está fora dos limites de
             // chaves da lista, vamos procurar no seu interior
@@ -188,9 +181,7 @@ namespace Proj4
                 // termina a pesquisa indicando que não achou. Anterior
                 // aponta o anterior ao atual, que foi acessado por
                 // último
-                if (atual.Info.CompareTo(outroProcurado) > 0)
-                    fim = true;
-                else
+                
                 {
                     // se não achou a chave procurada nem uma chave > que ela,
                     // então a pesquisa continua, de maneira que o apontador
