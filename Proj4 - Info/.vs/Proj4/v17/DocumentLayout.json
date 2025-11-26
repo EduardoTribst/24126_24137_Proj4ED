@@ -1,33 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\",
+  "WorkspaceRootPath": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\listasimples.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:listasimples.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|c:\\users\\u24126\\documents\\github\\24126_24137_proj4ed\\proj4 - info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|c:\\users\\eduar\\onedrive\\documentos\\github\\24126_24137_proj4ed\\proj4 - info\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\listasimples.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:listasimples.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:arvoreavl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\grafo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\grafo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:grafo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6740BFC1-3F71-402F-87E5-DFF5FD2CEB47}|Proj4.csproj|solutionrelative:vertice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
+              "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAADcCAAAAAAAAAAAIwCUBAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAMgAAAAAAAAAAAArwNQAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T13:16:39.612Z",
               "IsPinned": true,
@@ -56,88 +56,27 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{80c411e8-fd5e-4b16-914b-0d9d84172cc1}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ListaSimples.cs",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ListaSimples.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ListaSimples.cs",
               "RelativeDocumentMoniker": "ListaSimples.cs",
-              "ToolTip": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ListaSimples.cs",
+              "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ListaSimples.cs",
               "RelativeToolTip": "ListaSimples.cs",
               "ViewState": "AgIAAKYAAAAAAAAAAAAAAMEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T23:41:18.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T23:41:18.425Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ArvoreAVL.cs",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
               "RelativeDocumentMoniker": "ArvoreAVL.cs",
-              "ToolTip": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
+              "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\ArvoreAVL.cs",
               "RelativeToolTip": "ArvoreAVL.cs",
               "ViewState": "AgIAAAEBAAAAAAAAAAAAAA4BAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -145,11 +84,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Cidade.cs",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Cidade.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Cidade.cs",
               "RelativeDocumentMoniker": "Cidade.cs",
-              "ToolTip": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Cidade.cs",
+              "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Cidade.cs",
               "RelativeToolTip": "Cidade.cs",
               "ViewState": "AgIAAHYAAAAAAAAAAAAQwIcAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -160,20 +99,21 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:36:21.411Z"
+              "WhenOpened": "2025-11-13T11:36:21.411Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Vertice.cs",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Vertice.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Vertice.cs",
               "RelativeDocumentMoniker": "Vertice.cs",
-              "ToolTip": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Vertice.cs",
+              "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Vertice.cs",
               "RelativeToolTip": "Vertice.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -183,9 +123,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Grafo.cs",
-              "DocumentMoniker": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Grafo.cs",
+              "DocumentMoniker": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Grafo.cs",
               "RelativeDocumentMoniker": "Grafo.cs",
-              "ToolTip": "C:\\Users\\u24126\\Documents\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Grafo.cs",
+              "ToolTip": "C:\\Users\\eduar\\OneDrive\\Documentos\\GitHub\\24126_24137_Proj4ED\\Proj4 - Info\\Grafo.cs",
               "RelativeToolTip": "Grafo.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAwwDsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

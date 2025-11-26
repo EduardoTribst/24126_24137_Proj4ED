@@ -214,7 +214,7 @@ namespace Proj4
 
             Pen corCaminhos = new Pen(Color.DarkGray, 2);
             Brush corCidade = new SolidBrush(Color.Red);
-            Font fonte = new Font("Papyrus", 10, FontStyle.Bold);
+            Font fonte = new Font("Arial", 10, FontStyle.Bold);
 
             foreach (Cidade cidade in listaCidades)
             {
