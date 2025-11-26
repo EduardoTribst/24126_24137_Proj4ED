@@ -133,7 +133,8 @@ namespace Proj4
             }
             else
             {
-                ligacoes.InserirAposFim(novaLigacao);
+                //Precisa inserir em ordem para que os caminhos criados durante a execução fiquem ordenadas na lista
+                ligacoes.InserirEmOrdem(novaLigacao);
                 return true;
             }
         }
